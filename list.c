@@ -20,24 +20,92 @@ int INIT = 0;
 //* Helper Functions
 //****************************
 
-void initList(LIST *list)
+void ResetList(struct LIST *list)
 {
 	list->length = 0;
 	list->cur_state = 0;
 	list->first = NULL;
 	list->last = NULL;
 	list->current = NULL;
-};
+}
 
-int AddToEmpty(List *list, void *item)
+int AddToEmpty(struct LIST *list, void *item)
 {
-	list->current = ListTrim(empty_nodes);
+	list->current = AllocateNode();
 	list->first = list->current;
 	list->last = list->current;
-	cur_state = 0;
+	list->cur_state = 0;
+	list->length++;
 	return 0;
-};
+}
 
+void DeallocateNode(struct NODE *node)
+{
+	node->item = NULL;
+	empty_nodes.current = node;		
+	
+	if(ListCount(&empty_nodes) <= 0)
+	{
+		empty_nodes.first = node;
+		empty_nodes.last = node;
+		empty_nodes.current->previous = NULL;
+		empty_nodes.current->next = NULL;
+		empty_nodes.length++;
+		return;
+	}
+
+	empty_nodes.current->next = empty_nodes.first;
+	empty_nodes.current->previous = NULL;
+	empty_nodes.first->previous = empty_nodes.current;
+	empty_nodes.first = empty_nodes.current;
+	empty_nodes.length++;
+	return;
+}	
+
+struct NODE *AllocateNode()
+{
+	struct NODE *node = NULL;
+	if(ListCount(&empty_nodes) > 1)
+	{
+		node = empty_nodes.last;		
+		empty_nodes.last = empty_nodes.last->previous;
+		empty_nodes.last->next = NULL;	
+	}
+	if(ListCount(&empty_nodes) == 1)
+	{
+		node = empty_nodes.last;		
+		empty_nodes.last = NULL;
+		empty_nodes.current = NULL;
+		empty_nodes.last = NULL;
+	}
+
+	return node;
+}
+
+int IsNodeAvailable()
+{
+	return (ListCount(&empty_nodes) > MAX_NODES - MAX_LISTS);
+}
+
+void InitLists()
+{
+	INIT = 1;
+	ResetList(&empty_heads);
+	ResetList(&empty_nodes);
+
+	for(int i = 0; i < MAX_NODES; i++)
+	{
+		DeallocateNode(&nodes[i]);
+	}
+
+	for(int i = 0; i < MAX_LISTS; i++)
+	{
+		ListAppend(&empty_heads, &heads[i]);
+	}
+	//*******************
+	// allocate list of heads
+}
+			
 
 //****************************
 //* Core Functions
@@ -51,13 +119,19 @@ struct LIST *ListCreate()
 {
 	if(!INIT)
 	{
-		INIT = 1;
-		for(int i = 0; i < MAX_NODES; i++)
-		{
-			ListAppend(&empty_nodes, &nodes[i]);
-						
+		InitLists();
+	}
+
+	//****************
+	// temp return					
 	return &empty_heads;			
 }
+
+int ListCount(struct LIST *list)
+{
+	return list->length;
+}
+
 
 /* check empty_nodes vs max nodes
  * first/last null -> empty -> stick it in
@@ -65,39 +139,41 @@ struct LIST *ListCreate()
  * cur after -> ListAppend
  * cur middle -> stick it in
 */
-int ListAdd(LIST *list, void *item)
+int ListAdd(struct LIST *list, void *item)
 {
-	if(ListCount(empty_nodes) <= 0)
+	if(!IsNodeAvailable())
 	{
 		return -1;
 	}
 
-	if(!list->first)
+	if(ListCount(list) <= 0)
 	{
 		return AddToEmpty(list, item);		
 	}
 
 	//current is past last, current is last, or only one element
-	if(cur_state == 1 || list->current == list->last)
+	if(list->cur_state == 1 || list->current == list->last)
 	{
 		return ListAppend(list, item);
 	}
-	
-	if(cur_state == -1)
+
+	//current is before first	
+	if(list->cur_state == -1)
 	{
 		return ListPrepend(list, item);
 	}
 	
 	//current is first or somewhere within
-	if(cur_state == 0)
+	if(list->cur_state == 0)
 	{
-		NODE *new_next = list->current->next;
-		list->current->next = ListTrim(empty_nodes);
+		struct NODE *new_next = list->current->next;
+		list->current->next = AllocateNode();
 		list->current->next->previous = list->current;
 		list->current->next->next = new_next;
 		list->current = list->current->next;
 		list->current->item = item;
-		
+		list->cur_state = 0;
+		list->length++;	
 		return 0;
 	}
 	return -1;
@@ -107,40 +183,75 @@ int ListAdd(LIST *list, void *item)
  * check if empty
  * stick after last
 */
-int ListAppend(LIST *list, void *item)
+int ListAppend(struct LIST *list, void *item)
 {
-	if(ListCount(empty_nodes) <= 0)
+	if(!IsNodeAvailable())
 	{
 		return -1;
 	}
 
-	if(!list->last)
+	if(ListCount(list) <= 0)
 	{
 		return AddToEmpty(list, item);		
 	}
 
+	list->current = AllocateNode();
+	list->current->previous = list->last;
+	list->current->next = NULL;
+	list->last->next = list->current;
+	list->last = list->current;
+	list->current->item = item;
+	list->cur_state = 0;
+	list->length++;	
+	return 0;
+}
+
+int ListPrepend(struct LIST *list, void *item)
+{
+	if(!IsNodeAvailable())
+	{
+		return -1;
+	}
+
+	if(ListCount(list) <= 0)
+	{
+		return AddToEmpty(list, item);		
+	}
+	
+	list->current = AllocateNode();
+	list->current->previous = NULL;
+	list->current->next = list->first;
+	list->first->previous = list->current;
+	list->first = list->current;
+	list->current->item = item;
+	list->cur_state = 0;
+	list->length++;	
+	return 0;
+}
+	
 	
 
+void *ListTrim(struct LIST *list)
+{
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	if(ListCount(list) >= 1)
+	{
+		void *val = list->last->item;
+		list->current = list->last->previous;
+		list->current->next = NULL;
+		DeallocateNode(list->last);
+		list->last = list->current;
+		
+		if(ListCount(list) == 1)
+		{
+			list->first = NULL;
+		} 
+		
+		list->cur_state = 0;
+		list->length = list->length - 1;
+	}
+	return NULL;
+}
 
 
 

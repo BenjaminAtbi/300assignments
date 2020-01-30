@@ -12,3 +12,9 @@ int main()
 	return 0;
 }
 
+
+
+/* 
+1. test reset list
+2. test isnodeavailable
+3.  
