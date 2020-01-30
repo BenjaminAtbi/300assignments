@@ -11,8 +11,8 @@
 
 struct LIST heads[MAX_LISTS];
 struct NODE nodes[MAX_NODES];
-struct LIST empty_heads;
-struct LIST empty_nodes;
+struct LIST empty_heads = { 0, 0, NULL, NULL, NULL};
+struct LIST empty_nodes = { 0, 0, NULL, NULL, NULL};
 
 int INIT = 0;
 
@@ -84,7 +84,7 @@ struct NODE *AllocateNode()
 
 int IsNodeAvailable()
 {
-	return (ListCount(&empty_nodes) > MAX_NODES - MAX_LISTS);
+	return (ListCount(&empty_nodes) < MAX_NODES - MAX_LISTS);
 }
 
 void InitLists()
