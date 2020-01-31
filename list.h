@@ -1,5 +1,9 @@
 
+
 #include <stddef.h>
+
+#ifndef LIST_H
+#define LIST_H
 
 struct NODE
 {
@@ -50,30 +54,33 @@ struct LIST *ListCreate();
 
 int ListCount(struct LIST *list);
 
-//void *ListFirst(list); 
+void *ListFirst(struct LIST *list); 
 
-//void *ListLast(list);
+void *ListLast(struct LIST *list);
 
-//void *ListNext(list);
+void *ListNext(struct LIST *list);
 
-//void *ListPrev(list);
+void *ListPrev(struct LIST *list);
 
-//void *ListCurr(list);
+void *ListCurr(struct LIST *list);
 
 int ListAdd(struct LIST *list, void *item);
 
-//int ListInsert(list, item);
+int ListInsert(struct LIST *list, void *item);
 
 int ListAppend(struct LIST *list, void *item);
 
 int ListPrepend(struct LIST *list, void *item);
 
-//void *ListRemove(list);
+void *ListRemove(struct LIST *list);
 
-//void ListConcat(list1, list2);
+void ListConcat(struct LIST *list1, struct LIST *list2);
 
-//void ListFree(list, itemFree);
+void ListFree(struct LIST *list, void (*itemFree)(void *));
 
 void *ListTrim(struct LIST *list);
 
-//void *ListSearch(list, comparator, comparisonArg);
+void *ListSearch(struct LIST *list, int (*comparator)(void *, void *), void *comparisonArg);
+
+
+#endif
