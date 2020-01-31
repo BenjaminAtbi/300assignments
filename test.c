@@ -409,25 +409,26 @@ void testSearch()
 
 int main()
 {
-	//test_reset();	
-	//testAllocation();		
-	//testAddToEmpty();	
-	//testListAppend();
-	//testListCount();	
-	//testInitLists();	
-	//testListTrim();
-	//testListCreate();
-	//testListPrepend();
-	//testFirstLast();		
-	//testNextPrev();	
-	//testAddInsert();	
-	//testRemove();
-	//testConcat();
-	//testFree();
-	//testSearch();
+//	some tests do not properly reset and can break other tests if run in series
+
+//	test_reset();	
+//	testAllocation();		
+//	testAddToEmpty();	
+//	testListAppend();
+//	testListCount();	
+//	testInitLists();	
+//	testListTrim();
+//	testListCreate();
+//	testListPrepend();
+//	printList(&empty_heads);	
+//	testFirstLast();		
+//	testNextPrev();	
+//	testAddInsert();	
+//	testRemove();
+//	testConcat();
+//	testFree();
+//	testSearch();
 	return 0;
 }
-
-
 
 
