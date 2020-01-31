@@ -410,8 +410,6 @@ void testSearch()
 
 int main()
 {
-	//some tests do not reset the state correctly and can break other tests if run in sequence
-	
 	//test_reset();	
 	//testAllocation();		
 	//testAddToEmpty();	
