@@ -28,7 +28,7 @@ extern struct LIST heads[MAX_LISTS];
 extern struct NODE nodes[MAX_NODES];
 extern struct LIST empty_heads;
 extern struct LIST empty_nodes;
-
+extern int INIT;
 
 //*****************
 // Helper Function decs
