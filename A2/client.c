@@ -47,7 +47,7 @@ int sender()
     //make socket
     int sockfd;
     if ((sockfd = socket(servinfo->ai_family, servinfo->ai_socktype, servinfo->ai_protocol)) != 0) {
-        fprintf(stderr, "making socket failed\n");
+        fprintf(stderr, "making socket: $i\n", sockfd);
         return 1;
     }
 
