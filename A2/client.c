@@ -25,7 +25,7 @@ sender shit
 
 const char* portnum = "42069";
 const char* remoteportnum = "69420";
-const char* name = "fakename";
+const char* name = "csil-cpu3";
 
 
 int sender()
@@ -46,8 +46,8 @@ int sender()
 
     //make socket
     int sockfd;
-    if ((sockfd = socket(servinfo->ai_family, servinfo->ai_socktype, servinfo->ai_protocol)) != 0) {
-        fprintf(stderr, "making socket: $i\n", sockfd);
+    if ((sockfd = socket(servinfo->ai_family, servinfo->ai_socktype, servinfo->ai_protocol)) == -1) {
+        fprintf(stderr, "making socket: %i\n", sockfd);
         return 1;
     }
 
