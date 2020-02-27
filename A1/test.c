@@ -9,6 +9,7 @@ void ResetTestEnv(){
 	resetPtrList();
 	ResetList(&empty_nodes);
 	ResetList(&empty_heads);	
+	INIT = 0;		
 }
 
 void resetPtrList()
