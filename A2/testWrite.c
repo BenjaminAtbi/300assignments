@@ -4,7 +4,8 @@
 
 int main(int argc, char *argv[])
 {
-    printf("sender: %i\n", sender());
+    printf("testing write \n");
+    writeoutput();
 }
 
     

@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-    printf("sender: %i\n", sender());
+    printf("reciever: %i\n", reciever());
 }
 
     
