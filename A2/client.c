@@ -1,32 +1,10 @@
 #include "client.h"
-
-/*
-reciever shit
-    * 
-    *  getaddrinfo(...)
-    *  socket(...)
-    *  bind(...)
-    *  loop recvfrom(...)
-    *  close(...)
+#include "list.h"
+/* 
+    Networking Code referenced from Beej's Guide to Network Programming
+    http://beej.us/guide/bgnet/html/#datagram
 */
 
-/*
-sender shit
-    *  getaddrinfo(...)
-    *  socket(...)
-    *  loop sendto(...)
-    *  close(...)
-*/
-
-/* ************* givens ************** 
-    port number
-    remote machine name
-*/
-
-const char* portnum1 = "42069";
-const char* portnum2 = "69420";
-const char* name1 = "csil-cpu2";
-const char* name2 = "csil-cpu3";
 
 void *get_in_addr(struct sockaddr *sa)
 {
@@ -37,8 +15,16 @@ void *get_in_addr(struct sockaddr *sa)
     return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
 
-int reciever()
+
+
+/*
+    thread that recieves UDP packets
+    * pushes packet contents into toPrint list.
+    * uses mtxPrint mutex.
+*/
+void *reciever(void * toPrint)
 {
+
 //prepare hints 
     struct addrinfo hints;
     memset(&hints, 0, sizeof hints);
@@ -49,9 +35,9 @@ int reciever()
     //get target address -> servinfo
     struct addrinfo *servinfo;
     int rv;
-    if ((rv = getaddrinfo(NULL, portnum2, &hints, &servinfo)) != 0) {
+    if ((rv = getaddrinfo(NULL, local_port, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
-        return 1;
+        exit(1);
     }
 
     // loop through all the results and bind to the first we can
@@ -75,38 +61,43 @@ int reciever()
 
     if (p == NULL) {
         fprintf(stderr, "listener: failed to bind socket\n");
-        return 1;
+        exit(0);
     }
 
     freeaddrinfo(servinfo);
-    printf("created reciving socket\n");
 
-    //recieve data from addr
-    int MAXBUFLEN = 100;
-    char buf[MAXBUFLEN];
+    //values required for recieving packets
     int numbytes;
     struct sockaddr_storage their_addr;
     socklen_t addr_len = sizeof their_addr;
-    if ((numbytes = recvfrom(sockfd, buf, MAXBUFLEN-1 , 0, (struct sockaddr *)&their_addr, &addr_len)) == -1) {
-        fprintf(stderr, "error reciving\n");
-        return 1;
+    
+    while(1){
+
+        //recieve a message
+        char* buf = malloc(BUFLENGTH * sizeof(char));
+        if ((numbytes = recvfrom(sockfd, buf, BUFLENGTH, 0, (struct sockaddr *)&their_addr, &addr_len)) == -1) {
+            fprintf(stderr, "error reciving\n");
+            exit(0);
+        }
+
+        pthread_mutex_lock (&mtxPrint);
+        //if recive "!", exit
+        if(buf[0] == '!'){
+            exit(0);
+        }
+
+        //push to printlist
+        ListPrepend(toPrint, buf);
+        pthread_mutex_unlock (&mtxPrint);
     }
-
-    //print source data
-    char s[INET6_ADDRSTRLEN];
-    printf("listener: got packet from %s\n", inet_ntop(their_addr.ss_family, get_in_addr((struct sockaddr *)&their_addr),
-    s, sizeof s));
-
-    //print message
-    buf[numbytes] = '\0';
-    printf("message: \"%s\"\n", buf);
-
-    close(sockfd);
-
-    return 0;
 }
 
-int sender()
+/*
+    thread that sends UDP packets
+    * takes strings from toSend list.
+    * uses mtxSend mutex.
+*/
+void *sender(void *toSend)
 {
     //prepare hints 
     struct addrinfo hints;
@@ -118,9 +109,9 @@ int sender()
     //get target address -> servinfo
     struct addrinfo *servinfo;
     int rv;
-    if ((rv = getaddrinfo(name2, portnum2, &hints, &servinfo)) != 0) {
+    if ((rv = getaddrinfo(remote_name, remote_port, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
-        return 1;
+        exit(0);
     }
 
     //make socket
@@ -128,7 +119,7 @@ int sender()
     struct addrinfo *p;
     if ((sockfd = socket(servinfo->ai_family, servinfo->ai_socktype, servinfo->ai_protocol)) == -1) {
             fprintf(stderr, "making socket: %i\n", sockfd);
-        return 1;
+        pthread_exit(NULL);
     }
 
     for(p = servinfo; p != NULL; p = p->ai_next) {
@@ -141,35 +132,57 @@ int sender()
 
     if (p == NULL) {
         fprintf(stderr, "Failed to create outbound socket\n");
-        return 1;
+        exit(0);
     }
 
-    char * buf = "u mum gay";
+    
+
+    //send packets
     int numbytes;
-    if ((numbytes = sendto(sockfd, buf, strlen(buf), 0,
-             p->ai_addr, p->ai_addrlen)) == -1) {
-        fprintf(stderr, "Failed to send message\n");
-        return 1;
+    while(1){
+
+        pthread_mutex_lock (&mtxSend);
+        if(ListCount(toSend) > 0){
+
+            //take string from list, send as packet, then free string.
+            char * buf = ListTrim(toSend);
+            if ((numbytes = sendto(sockfd, buf, BUFLENGTH, 0,
+                p->ai_addr, p->ai_addrlen)) == -1) {
+                fprintf(stderr, "Failed to send message\n");
+                exit(0);
+            }
+            if (buf[0] == '!'){
+                exit(0);
+            }
+            free(buf);
+        }
+        pthread_mutex_unlock (&mtxSend);
     }
-
-    freeaddrinfo(servinfo);
-
-    printf("sent %d bytes to %s\n", numbytes, name2);
-    close(sockfd);
-    return 0;
 }
 
-
-int readinput() 
+/*
+    thread that recieves input from terminal
+    * reads BUFLENGTH lines
+    * longer lines split into separate instances
+    * puts strings in toSend list.
+    * uses mtxSend mutex.
+*/
+void *readinput(void *toSend) 
 {
-    char buf[BUFLENGTH];
+    
     while(1)
     {
+        char* buf = malloc(BUFLENGTH * sizeof(char));
         readline(buf);
-        printf("%s",buf);
+
+        pthread_mutex_lock (&mtxSend);
+        ListPrepend(toSend,buf);
+        pthread_mutex_unlock (&mtxSend);
     }
 }
 
+//reads a single line of input data from terminal
+//fill a char buffer terminated by \n
 int readline(char *buf)
 {
     memset(buf, 0, BUFLENGTH * sizeof(char));
@@ -190,13 +203,49 @@ int readline(char *buf)
     }
 }
 
-int writeoutput()
+/*
+    thread that sends msgs to terminal
+    * pulls from toPrint list
+    * uses mtxPrint mutex
+*/
+void *writeoutput(void *toPrint)
 {
     while(1)
     {
-        sleep(3);
-        printf("dumdum\n");
+        pthread_mutex_lock (&mtxPrint);
+        
+        if(ListCount(toPrint) > 0){
+            char *buf = ListTrim(toPrint);
+            printf("%.*s",BUFLENGTH, buf);
+            free(buf);
+        }
+        
+        pthread_mutex_unlock (&mtxPrint);
     }
 }
 
-threadtest
+int main(int argc, char *argv[]){
+
+    assert(argc == 4);
+
+    local_port = argv[1]; //42069
+    //const char* name1 = "csil-cpu2";
+    remote_name =argv[2]; //csil-cpu3
+    remote_port = argv[3]; //69420
+    
+    LIST *toSend = ListCreate();
+    LIST *toPrint = ListCreate();
+    pthread_t th1, th2, th3, th4;
+    
+    //initialize mutexes
+    pthread_mutex_init(&mtxSend, NULL);
+    pthread_mutex_init(&mtxPrint, NULL);
+
+    int resp;
+    resp = pthread_create( &th1, NULL, reciever, (void*) toPrint);
+    resp = pthread_create( &th2, NULL, sender, (void*) toSend);
+    resp = pthread_create( &th3, NULL, readinput, (void*) toSend);
+    resp = pthread_create( &th4, NULL, writeoutput, (void*) toPrint);
+
+    pthread_exit(NULL);
+}

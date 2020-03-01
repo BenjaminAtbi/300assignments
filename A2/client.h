@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include <unistd.h>
 #include <errno.h>
 #include <string.h>
@@ -12,15 +13,22 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <unistd.h>
+#include <pthread.h>
 
 #define BUFLENGTH 100
 
-int reciever();
-int sender();
+pthread_mutex_t mtxSend;
+pthread_mutex_t mtxPrint;
+const char* local_port;
+const char* remote_name;
+const char* remote_port;
+
+void *reciever();
+void *sender();
 void *get_in_addr(struct sockaddr *sa);
 
-int writeoutput();
-int readinput();
+void *writeoutput();
+void *readinput();
 int readline(char *buf);
 
 #endif
