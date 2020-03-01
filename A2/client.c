@@ -111,7 +111,7 @@ void *sender(void *toSend)
     int rv;
     if ((rv = getaddrinfo(remote_name, remote_port, &hints, &servinfo)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
-        exit(0);
+        exit(1);
     }
 
     //make socket
@@ -119,7 +119,7 @@ void *sender(void *toSend)
     struct addrinfo *p;
     if ((sockfd = socket(servinfo->ai_family, servinfo->ai_socktype, servinfo->ai_protocol)) == -1) {
             fprintf(stderr, "making socket: %i\n", sockfd);
-        pthread_exit(NULL);
+        exit(1);
     }
 
     for(p = servinfo; p != NULL; p = p->ai_next) {
@@ -132,7 +132,7 @@ void *sender(void *toSend)
 
     if (p == NULL) {
         fprintf(stderr, "Failed to create outbound socket\n");
-        exit(0);
+        exit(1);
     }
 
     
