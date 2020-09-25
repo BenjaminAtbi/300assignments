@@ -1,86 +1,123 @@
+// List data type
+// You may modify this file as needed; however,
+// you may *NOT* modify the function prototypes or constant names.
 
+#ifndef _LIST_H_
+#define _LIST_H_
+#include <stdbool.h>
 
-#include <stddef.h>
+#define LIST_SUCCESS 0
+#define LIST_FAIL -1
 
-#ifndef LIST_H
-#define LIST_H
-
-struct NODE
-{
-	void *item;
-	struct NODE *next;
-	struct NODE *previous;
+typedef struct Node_s Node;
+struct Node_s {
+    // TODO: You should change this
 };
 
-struct LIST
-{
-	int length;
-	int cur_state;
-	struct NODE *first;
-	struct NODE *last;
-	struct NODE *current;
+enum ListOutOfBounds {
+    LIST_OOB_START,
+    LIST_OOB_END
+};
+typedef struct List_s List;
+struct List_s{
+    // TODO: You should change this!
 };
 
-#define MAX_LISTS 10
-#define MAX_NODES 100
+// Maximum number of unique lists the system can support
+// (You may modify for your needs)
+#define LIST_MAX_NUM_HEADS 10
 
-extern struct LIST heads[MAX_LISTS];
-extern struct NODE nodes[MAX_NODES];
-extern struct LIST empty_heads;
-extern struct LIST empty_nodes;
-extern int INIT;
+// Maximum total number of nodes (statically allocated) to be shared across all lists
+// (You may modify for your needs)
+#define LIST_MAX_NUM_NODES 100
 
-//*****************
-// Helper Function decs
-//******************
+// General Error Handling:
+// Client code is assumed never to call these functions with a NULL List pointer, or 
+// bad List pointer. If it does, any behaviour is permitted (such as crashing).
+// HINT: Use assert(pList != NULL); just to add a nice check, but not required.
 
-void ResetList(struct LIST *list);
+// Makes a new, empty list, and returns its reference on success. 
+// Returns a NULL pointer on failure.
+List* List_create();
 
-int AddToEmpty(struct LIST *list, void *item);
+// Returns the number of items in pList.
+int List_count(List* pList);
 
-void DeallocateNode(struct NODE *node);
+// Returns a pointer to the first item in pList and makes the first item the current item.
+// Returns NULL and sets current item to NULL if list is empty.
+void* List_first(List* pList);
 
-struct NODE *AllocateNode();
+// Returns a pointer to the last item in pList and makes the last item the current item.
+// Returns NULL and sets current item to NULL if list is empty.
+void* List_last(List* pList); 
 
-int IsNodeAvailable();
+// Advances pList's current item by one, and returns a pointer to the new current item.
+// If this operation advances the current item beyond the end of the pList, a NULL pointer 
+// is returned and the current item is set to be beyond end of pList.
+void* List_next(List* pList);
 
-void InitLists();
+// Backs up pList's current item by one, and returns a pointer to the new current item. 
+// If this operation backs up the current item beyond the start of the pList, a NULL pointer 
+// is returned and the current item is set to be before the start of pList.
+void* List_prev(List* pList);
 
-//******************
-// Core Function decs
-//******************
+// Returns a pointer to the current item in pList.
+void* List_curr(List* pList);
 
-struct LIST *ListCreate();
+// Adds the new item to pList directly after the current item, and makes item the current item. 
+// If the current pointer is before the start of the pList, the item is added at the start. If 
+// the current pointer is beyond the end of the pList, the item is added at the end. 
+// Returns 0 on success, -1 on failure.
+int List_add(List* pList, void* pItem);
 
-int ListCount(struct LIST *list);
+// Adds item to pList directly before the current item, and makes the new item the current one. 
+// If the current pointer is before the start of the pList, the item is added at the start. 
+// If the current pointer is beyond the end of the pList, the item is added at the end. 
+// Returns 0 on success, -1 on failure.
+int List_insert(List* pList, void* pItem);
 
-void *ListFirst(struct LIST *list); 
+// Adds item to the end of pList, and makes the new item the current one. 
+// Returns 0 on success, -1 on failure.
+int List_append(List* pList, void* pItem);
 
-void *ListLast(struct LIST *list);
+// Adds item to the front of pList, and makes the new item the current one. 
+// Returns 0 on success, -1 on failure.
+int List_prepend(List* pList, void* pItem);
 
-void *ListNext(struct LIST *list);
+// Return current item and take it out of pList. Make the next item the current one.
+// If the current pointer is before the start of the pList, or beyond the end of the pList,
+// then do not change the pList and return NULL.
+void* List_remove(List* pList);
 
-void *ListPrev(struct LIST *list);
+// Adds pList2 to the end of pList1. The current pointer is set to the current pointer of pList1. 
+// pList2 no longer exists after the operation; its head is available
+// for future operations.
+void List_concat(List* pList1, List* pList2);
 
-void *ListCurr(struct LIST *list);
+// Delete pList. pItemFreeFn is a pointer to a routine that frees an item. 
+// It should be invoked (within List_free) as: (*pItemFreeFn)(itemToBeFreedFromNode);
+// pList and all its nodes no longer exists after the operation; its head and nodes are 
+// available for future operations.
+typedef void (*FREE_FN)(void* pItem);
+void List_free(List* pList, FREE_FN pItemFreeFn);
 
-int ListAdd(struct LIST *list, void *item);
+// Return last item and take it out of pList. Make the new last item the current one.
+// Return NULL if pList is initially empty.
+void* List_trim(List* pList);
 
-int ListInsert(struct LIST *list, void *item);
-
-int ListAppend(struct LIST *list, void *item);
-
-int ListPrepend(struct LIST *list, void *item);
-
-void *ListRemove(struct LIST *list);
-
-void ListConcat(struct LIST *list1, struct LIST *list2);
-
-void ListFree(struct LIST *list, void (*itemFree)(void *));
-
-void *ListTrim(struct LIST *list);
-
-void *ListSearch(struct LIST *list, int (*comparator)(void *, void *), void *comparisonArg);
-
+// Search pList, starting at the current item, until the end is reached or a match is found. 
+// In this context, a match is determined by the comparator parameter. This parameter is a
+// pointer to a routine that takes as its first argument an item pointer, and as its second 
+// argument pComparisonArg. Comparator returns 0 if the item and comparisonArg don't match, 
+// or 1 if they do. Exactly what constitutes a match is up to the implementor of comparator. 
+// 
+// If a match is found, the current pointer is left at the matched item and the pointer to 
+// that item is returned. If no match is found, the current pointer is left beyond the end of 
+// the list and a NULL pointer is returned.
+// 
+// If the current pointer is before the start of the pList, then start searching from
+// the first node in the list (if any).
+typedef bool (*COMPARATOR_FN)(void* pItem, void* pComparisonArg);
+void* List_search(List* pList, COMPARATOR_FN pComparator, void* pComparisonArg);
 
 #endif
