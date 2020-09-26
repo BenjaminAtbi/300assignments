@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "limits.h": "c",
+        "regex": "c"
+    }
+}
