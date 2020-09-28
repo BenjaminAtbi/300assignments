@@ -11,16 +11,27 @@
 
 typedef struct Node_s Node;
 struct Node_s {
-    // TODO: You should change this
+    void* item;
+    struct Node* next;
+    struct Node* prev;
 };
 
 enum ListOutOfBounds {
     LIST_OOB_START,
     LIST_OOB_END
 };
+
+enum NodeRelation {
+    LEFT_OF,
+    RIGHT_OF
+};
+
 typedef struct List_s List;
 struct List_s{
-    // TODO: You should change this!
+    int len;
+    struct Node* first;
+    struct Node* last;
+    struct Node* current;
 };
 
 // Maximum number of unique lists the system can support
