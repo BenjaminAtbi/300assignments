@@ -12,8 +12,8 @@
 typedef struct Node_s Node;
 struct Node_s {
     void* item;
-    struct Node* next;
-    struct Node* prev;
+    Node* next;
+    Node* prev;
 };
 
 enum ListOutOfBounds {
@@ -29,9 +29,9 @@ enum NodeRelation {
 typedef struct List_s List;
 struct List_s{
     int len;
-    struct Node* first;
-    struct Node* last;
-    struct Node* current;
+    Node* first;
+    Node* last;
+    Node* current;
 };
 
 // Maximum number of unique lists the system can support
@@ -41,6 +41,13 @@ struct List_s{
 // Maximum total number of nodes (statically allocated) to be shared across all lists
 // (You may modify for your needs)
 #define LIST_MAX_NUM_NODES 100
+
+//nodes and heads to be allocated 
+extern Node nodes[LIST_MAX_NUM_NODES];
+extern List heads[LIST_MAX_NUM_HEADS];
+extern List free_nodes;
+extern List free_heads;
+
 
 // General Error Handling:
 // Client code is assumed never to call these functions with a NULL List pointer, or 
