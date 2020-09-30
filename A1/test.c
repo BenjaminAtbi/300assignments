@@ -7,13 +7,18 @@
 
 
 /***********************
-TEMPORARY
+TEMPORARY DECLARATION
 *************/ 
 
-Node nodes[LIST_MAX_NUM_NODES];
-List heads[LIST_MAX_NUM_HEADS];
-List free_nodes = { 0, NULL, NULL, NULL};
-List free_heads = { 0, NULL, NULL, NULL};
+// Node nodes[LIST_MAX_NUM_NODES];
+// List heads[LIST_MAX_NUM_HEADS];
+// List free_nodes = { 0, NULL, NULL, NULL};
+// List free_heads = { 0, NULL, NULL, NULL};
+
+
+/***********************
+TEMPORARY DECLARATION
+*************/ 
 
 //exit program upon error in list
 void listErr(List* list, char* err)
@@ -62,7 +67,7 @@ void printHeadDetails(List* list)
     printNodeSignature(list->last);
     printf(" Current: ");
     printNodeSignature(list->current);
-    printf(" length: %i ]]\n", list->len);
+    printf(" length: %i ]]\n", list->length);
 }
 
 //print all details regarding node
@@ -97,27 +102,49 @@ int GetNodeID(Node* node)
             return i;
         }
     }
-    generalErr("GetNodeID: node not in list");
+    return -1;
 }
 
 //
-void ValidateList(List* list)
+void ValidateList(List* list, Void* control_list)
 {
-    if(list->len == 0 && (list->first != NULL) || (list->last != NULL))
+    if(list->length == 0 && (list->first != NULL) || (list->last != NULL))
     {
         listErr(list, "ValidateList: list of length 0 has nodes\n");
     }
-    if(list->len != 0 && (list->first == NULL) || (list->last == NULL))
+    if(list->length != 0 && (list->first == NULL) || (list->last == NULL))
     {
         listErr(list, "ValidateList: list of length >0 has NULL pointer\n");
     }
-}
+    if(list->first->prev != NULL)
+    {
+        listErr(list, "ValidateList: first node not preceded by NULL\n");
+    }
+    Node* node = list->first;
+    for(int i = 0; i < LIST_MAX_NUM_NODES; i++)
+    {
+        if(node->item != control_list[i])
+        {
+            listErr(list, "element incorrect\n");
+        }
+        if(node->next == NULL)
+        {
+            if(list->length != i){
+                listErr(list, "length not correct\n");
+            }
+            break;
+        }
+    }
+    if(list->last != node)
+    {
+        listErr(list, "last element in traversal != last pointer");
+    }
 
 //initial self-sufficient test, string free nodes head with node 3 and 4
-void Test0(){
+void test0(){
     int e1 = 33;
     int e2 = 44;
-    free_nodes.len = 2;
+    free_nodes.length = 2;
     free_nodes.first = &nodes[3];
     free_nodes.last = &nodes[4];
     free_nodes.current = &nodes[4];
@@ -130,8 +157,16 @@ void Test0(){
     printList(&free_nodes);
 }
 
+//test Init
+void test1(){
+    Init();
+    printList(&free_nodes);
+    printList(&free_heads);
+}
+
+//test
 int main()
 {
-    Test0();
+    test1();
 }
 

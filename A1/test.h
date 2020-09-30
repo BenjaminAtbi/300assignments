@@ -3,6 +3,13 @@
 #ifndef _TEST_H_
 #define _TEST_H_
 
+//nodes and heads to be allocated 
+extern Node nodes[LIST_MAX_NUM_NODES];
+extern List heads[LIST_MAX_NUM_HEADS];
+extern List free_nodes;
+extern List free_heads;
+
+void Init();
 
 void listErr(List* list, char* err);
 

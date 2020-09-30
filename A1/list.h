@@ -28,10 +28,10 @@ enum NodeRelation {
 
 typedef struct List_s List;
 struct List_s{
-    int len;
     Node* first;
     Node* last;
     Node* current;
+    int length;
 };
 
 // Maximum number of unique lists the system can support
@@ -41,12 +41,6 @@ struct List_s{
 // Maximum total number of nodes (statically allocated) to be shared across all lists
 // (You may modify for your needs)
 #define LIST_MAX_NUM_NODES 100
-
-//nodes and heads to be allocated 
-extern Node nodes[LIST_MAX_NUM_NODES];
-extern List heads[LIST_MAX_NUM_HEADS];
-extern List free_nodes;
-extern List free_heads;
 
 
 // General Error Handling:
