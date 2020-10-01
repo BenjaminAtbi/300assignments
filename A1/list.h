@@ -18,12 +18,7 @@ struct Node_s {
 
 enum ListOutOfBounds {
     LIST_OOB_START,
-    LIST_OOB_END
-};
-
-enum NodeRelation {
-    LEFT_OF,
-    RIGHT_OF
+    LIST_OOB_END,
 };
 
 typedef struct List_s List;
@@ -32,6 +27,7 @@ struct List_s{
     Node* last;
     Node* current;
     int length;
+    enum ListOutOfBounds outofbounds;
 };
 
 // Maximum number of unique lists the system can support
