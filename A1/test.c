@@ -99,16 +99,29 @@ void printNodeSignature(Node* node)
 }
 
 //return ID of a node
-// * ID is index in node array
-int GetNodeID(Node* node)
+// * ID is arbitrary, determined by order id requested
+static Node* nodeIDs[LIST_MAX_NUM_NODES];
+static int last_id = 0;
+
+void InitNodeIDs()
 {
     for(int i = 0; i < LIST_MAX_NUM_NODES; i++)
     {
-        if(&nodes[i] == node){
+        nodeIDs[i] = NULL;
+    }
+}
+
+int GetNodeID(Node* node)
+{
+    for(int i = 0; i <= last_id; i++)
+    {
+        if(nodeIDs[i] == node){
             return i;
         }
     }
-    return -1;
+    nodeIDs[last_id] = node;
+    last_id++;
+    return last_id - 1;
 }
 
 //set first three values of a control list
@@ -206,21 +219,21 @@ void validateList(List* list, void** control_list)
 }
 
 //initial self-sufficient test, string free nodes head with node 3 and 4
-void test0(){
-    int e1 = 33;
-    int e2 = 44;
-    free_nodes.length = 2;
-    free_nodes.first = &nodes[3];
-    free_nodes.last = &nodes[4];
-    free_nodes.current = &nodes[4];
-    nodes[3].prev = NULL;
-    nodes[3].next = &nodes[4];
-    nodes[3].item = &e1;
-    nodes[4].prev = &nodes[3];
-    nodes[4].next = NULL;
-    nodes[4].item = &e2;
-    printList(&free_nodes);
-}
+// void test0(){
+//     int e1 = 33;
+//     int e2 = 44;
+//     free_nodes.length = 2;
+//     free_nodes.first = &nodes[3];
+//     free_nodes.last = &nodes[4];
+//     free_nodes.current = &nodes[4];
+//     nodes[3].prev = NULL;
+//     nodes[3].next = &nodes[4];
+//     nodes[3].item = &e1;
+//     nodes[4].prev = &nodes[3];
+//     nodes[4].next = NULL;
+//     nodes[4].item = &e2;
+//     printList(&free_nodes);
+// }
 
 //test Init 
 // void testn3(){
@@ -347,7 +360,10 @@ void test2(){
     //validate (first: 0, last: 2, current: 0, order: 0,1,2)
     void* control_list[7] = {&nums[0],&nums[2],&nums[0],&nums[0],&nums[1],&nums[2]};
     validateList(test_list, control_list);
+    SHIT
+    printList(test_list);
     List_prev(test_list);
+    SHIT
     setControlList(control_list,&nums[0],&nums[2],NULL);
     validateList(test_list, control_list);
     List_next(test_list);
@@ -438,17 +454,75 @@ void test5()
     List_concat(test_list_3,test_list_4);
     void* control_list_c[7] = {&nums[0],&nums[3],NULL,&nums[0],&nums[1],&nums[2],&nums[3]};
     validateList(test_list_3,control_list_c);
-    printList(test_list_3);
     printf("test5 passed\n");
 }
 
 
+static int test6_counter;
+void Test6_Print(void* pItem)
+{
+    test6_counter += *(int*)pItem;
+}
+
+//test free
+void test6()
+{
+    printf("test6: List_free()\n");
+    List* test_list = List_create();
+    int nums[4] = {0,1,2,3};
+    List_add(test_list, &nums[0]);
+    List_add(test_list, &nums[1]);
+    List_add(test_list, &nums[2]);
+    List_add(test_list, &nums[3]);
+    test6_counter = 0;
+    List_free(test_list, &Test6_Print);
+    assert(test6_counter == 6);
+    printf("test6 passed\n");
+}
+
+bool test7_comp(void* pItem, void* pComparisonArg)
+{
+    return *(int*)pItem == *(int*)pComparisonArg;
+}
+
+//test search
+void test7()
+{
+    printf("test7: List_search()\n");
+    List* test_list = List_create();
+    int nums[4] = {0,1,2,3};
+    //search empty list
+    assert(List_search(test_list, &test7_comp, &nums[0]) == NULL);
+    List_add(test_list, &nums[0]);
+    List_add(test_list, &nums[1]);
+    List_add(test_list, &nums[2]);
+    List_add(test_list, &nums[3]);
+    //search from first
+    List_first(test_list);
+    assert(List_search(test_list, &test7_comp, &nums[2]) == &nums[2]);
+    assert(List_curr(test_list) == &nums[2]);
+    //search from after last
+    List_last(test_list);
+    List_next(test_list);
+    assert(List_search(test_list, &test7_comp, &nums[2]) == NULL);
+    assert(List_curr(test_list) == NULL);
+    //search from before first
+    List_first(test_list);
+    List_prev(test_list);
+    assert(List_search(test_list, &test7_comp, &nums[2]) == &nums[2]);
+    assert(List_curr(test_list) == &nums[2]);
+    printf("test7 passed\n");
+}
+
 int main()
 {
+    InitNodeIDs();
     test1();
     test2();
     test3();
     test4();
     test5();
+    test6();
+    test7();
 }
 

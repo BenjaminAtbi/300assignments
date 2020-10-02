@@ -213,13 +213,21 @@ int List_count(List* pList)
 void* List_first(List* pList)
 {
     pList->current = pList->first;
-    return pList->first->item;
+    if(pList->current != NULL)
+    {
+        return pList->first->item;
+    }
+    return NULL;
 }
 
 void* List_last(List* pList)
 {
     pList->current = pList->last;
-    return pList->last->item;
+    if(pList->current != NULL)
+    {
+        return pList->last->item;
+    }
+    return NULL;
 }
 
 void* List_next(List* pList)
@@ -230,15 +238,23 @@ void* List_next(List* pList)
         pList->current = pList->first;
     }
     //if current in list
+    
     else if(pList->current != NULL)
     {
         pList->current = pList->current->next;
         if(pList->current == NULL)
         {
             pList->outofbounds = LIST_OOB_END;
+            return NULL;
+        } else
+        {
+            
+            return pList->current->item;
         }
+
     }
-    return pList->current;
+    //if current after list or empty list
+    return NULL;
 }
 
 void* List_prev(List* pList)
@@ -255,14 +271,22 @@ void* List_prev(List* pList)
         if(pList->current == NULL)
         {
             pList->outofbounds = LIST_OOB_START;
+            return NULL;
+        }else
+        {
+            return pList->current->item;
         }
     }
-    return pList->current;
+    //if current before list or empty list
+    return NULL;
 }
 
 void* List_curr(List* pList)
 {
-    return pList->current;
+    if(pList->current != NULL){
+        return pList->current->item;
+    }
+    return NULL;
 }
 
 int List_add(List* pList, void* pItem)
@@ -457,4 +481,26 @@ void* List_trim(List* pList)
 }
 
 typedef bool (*COMPARATOR_FN)(void* pItem, void* pComparisonArg);
-void* List_search(List* pList, COMPARATOR_FN pComparator, void* pComparisonArg);
+void* List_search(List* pList, COMPARATOR_FN pComparator, void* pComparisonArg)
+{
+    
+    if(pList->current == NULL)
+    {
+        if(pList->length == 0 || pList->outofbounds == LIST_OOB_END)
+        {
+            return NULL;
+        } else if(pList->outofbounds == LIST_OOB_START)
+        {
+            pList->current = pList->first;
+        }
+    }
+    while(pList->current != NULL){
+        if((*pComparator)(pList->current->item, pComparisonArg))
+        {
+            return pList->current->item;
+        }
+        pList->current = pList->current->next;
+    }
+    pList->outofbounds = LIST_OOB_END;
+    return NULL;
+}

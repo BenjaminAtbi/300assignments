@@ -118,7 +118,7 @@ void* List_trim(List* pList);
 // pointer to a routine that takes as its first argument an item pointer, and as its second 
 // argument pComparisonArg. Comparator returns 0 if the item and comparisonArg don't match, 
 // or 1 if they do. Exactly what constitutes a match is up to the implementor of comparator. 
-// 
+//
 // If a match is found, the current pointer is left at the matched item and the pointer to 
 // that item is returned. If no match is found, the current pointer is left beyond the end of 
 // the list and a NULL pointer is returned.
