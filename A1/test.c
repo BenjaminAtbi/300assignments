@@ -362,7 +362,6 @@ void test0()
     }
     //fully allocate all nodes and heads 100 times
     printf("test0 passed\n");
-
 }
 
 //test List_create(), add, insert

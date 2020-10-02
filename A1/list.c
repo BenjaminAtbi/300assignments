@@ -9,8 +9,8 @@ static Node headNodes[LIST_MAX_NUM_HEADS];
 
 //list of free nodes
 //nodes point to themself as item
- List free_nodes = { NULL, NULL, NULL, 0};
- List free_heads = { NULL, NULL, NULL, 0};
+static List free_nodes = { NULL, NULL, NULL, 0};
+static List free_heads = { NULL, NULL, NULL, 0};
 
 //flag for first initialization
 static int INIT = 0;
