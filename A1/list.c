@@ -3,14 +3,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Node nodes[LIST_MAX_NUM_NODES];
-List heads[LIST_MAX_NUM_HEADS];
-Node headNodes[LIST_MAX_NUM_HEADS];
+static Node nodes[LIST_MAX_NUM_NODES];
+static List heads[LIST_MAX_NUM_HEADS];
+static Node headNodes[LIST_MAX_NUM_HEADS];
 
 //list of free nodes
 //nodes point to themself as item
-List free_nodes = { NULL, NULL, NULL, 0};
-List free_heads = { NULL, NULL, NULL, 0};
+ List free_nodes = { NULL, NULL, NULL, 0};
+ List free_heads = { NULL, NULL, NULL, 0};
 
 //flag for first initialization
 static int INIT = 0;
@@ -155,6 +155,7 @@ static void ReturnNode(Node* node)
     if(free_nodes.length == 0)
     {
         AddFirstNode(&free_nodes, node);
+        free_nodes.length++;
     } else {
         JoinDoubleEdge(free_nodes.last, node, NULL);
         free_nodes.last = node;
@@ -294,7 +295,6 @@ int List_add(List* pList, void* pItem)
     Node* node = GetFreeNode();
     if(!node) return -1;
     node->item = pItem;
-
     //first element in list
     if(pList->length == 0)
     {

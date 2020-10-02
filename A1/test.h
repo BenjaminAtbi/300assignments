@@ -7,12 +7,12 @@
 // extern Node nodes[LIST_MAX_NUM_NODES];
 // extern List heads[LIST_MAX_NUM_HEADS];
 // extern Node headNodes[LIST_MAX_NUM_HEADS];
-// extern List free_nodes;
-// extern List free_heads;
+extern List free_nodes;
+extern List free_heads;
 
 
 //  TEMP GARBAGE
-#define SHIT printf("shit\n");
+// #define SHIT printf("shit\n");
 
 //exit program upon error in list
 void listErr(List* list, char* err);

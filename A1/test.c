@@ -328,8 +328,46 @@ void validateList(List* list, void** control_list)
 // }
 
 
+
+void dummyfree(void* pItem)
+{
+    //do nothing
+}
+
+//stress test allocation
+//assumes LIST_MAX_NUM_NODES is a multiple of LIST_MAX_NUM_HEADS
+void test0()
+{
+    printf("test0: list and node allocation/deallocation\n");
+    List* lists[LIST_MAX_NUM_HEADS];
+    //fully allocate and deallocate all heads and nodes 100 times
+    int val = 1;
+    for(int i = 0; i< 100; i++){
+        for(int j = 0; j < LIST_MAX_NUM_HEADS; j++)
+        {
+            lists[j] = List_create();
+            assert(lists[j] != NULL);
+            for(int k = 0; k < LIST_MAX_NUM_NODES / LIST_MAX_NUM_HEADS; k++)
+            {
+                assert(List_add(lists[j], &val) == 0);
+            }
+        }
+        assert(List_create() == NULL);
+        assert(List_add(lists[0], &val) == -1);
+
+        for(int n = 0; n < LIST_MAX_NUM_HEADS; n++)
+        {
+            List_free(lists[n], &dummyfree);
+        }
+    }
+    //fully allocate all nodes and heads 100 times
+    printf("test0 passed\n");
+
+}
+
 //test List_create(), add, insert
-void test1(){
+void test1()
+{
     printf("test1: test List_create(), list_add(), List_insert()\n");
     int nums[4] = {0,1,2,3};
     List* test_list = List_create();
@@ -348,7 +386,8 @@ void test1(){
 //move before first, validate
 //move to end, validate
 //move after end, validate
-void test2(){
+void test2()
+{
     printf("test2: test List_next(), List_prev(), List_first(), List_last()\n");
     int nums[3] = {0,1,2};
     List* test_list = List_create();
@@ -360,10 +399,7 @@ void test2(){
     //validate (first: 0, last: 2, current: 0, order: 0,1,2)
     void* control_list[7] = {&nums[0],&nums[2],&nums[0],&nums[0],&nums[1],&nums[2]};
     validateList(test_list, control_list);
-    SHIT
-    printList(test_list);
     List_prev(test_list);
-    SHIT
     setControlList(control_list,&nums[0],&nums[2],NULL);
     validateList(test_list, control_list);
     List_next(test_list);
@@ -378,7 +414,8 @@ void test2(){
 }
 
 //alternate appending and prepending value
-void test3(){
+void test3()
+{
     printf("test3: test list_prepend(), list_append()\n");
     int nums[4] = {0,1,2,3};
     List* test_list = List_create();
@@ -517,6 +554,7 @@ void test7()
 int main()
 {
     InitNodeIDs();
+    test0();
     test1();
     test2();
     test3();
