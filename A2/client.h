@@ -5,22 +5,29 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <pthread.h>
-#include <stdio.h>
+#include <sys/socket.h>
+#include <string.h>
 
-#define BUFLENGTH 100
+#include "list.h"
+#include "monitor.h"
 
-pthread_mutex_t mtxSend;
-pthread_mutex_t mtxReceive;
-const char* local_port;
-const char* remote_name;
-const char* remote_port;
+#define MSGLENGTH 100
+#define ADDRLENGTH 255
+
+//container for relevant addresses
+typedef struct
+{
+    const char* local_port;
+    const char* remote_name;
+    const char* remote_port;
+} addresses;
 
 void *reciever();
 void *sender();
-void *get_in_addr(struct sockaddr *sa);
-
-void *writeoutput();
 void *readinput();
+void *writeoutput();
+
+void *get_in_addr(struct sockaddr *sa);
 int readline(char *buf);
 
 #endif

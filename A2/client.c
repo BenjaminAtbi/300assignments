@@ -1,5 +1,5 @@
 #include "client.h"
-#include "list.h"
+
 
 // accept args
 // branch input
@@ -14,31 +14,23 @@
 
 int main(int argc, char *argv[]){
 
-    // assert(argc == 4);
-    // local_port = argv[1];
-    // remote_name =argv[2];
-    // remote_port = argv[3];
-    
-    // LIST *sendQueue = ListCreate();
-    // LIST *receiveQueue = ListCreate();
-    // pthread_t th1, th2, th3, th4;
+    if(argc != 4){
+        fprintf( stderr, "incorrect number of arguments\n");
+        exit(1);
+    }
 
-        
-    // //initialize mutexes
-    // pthread_mutex_init(&mtxSend, NULL);
-    // pthread_mutex_init(&mtxReceive, NULL);
+    addresses* addrs = malloc(sizeof(addresses));
+    addrs->local_port = strcpy(malloc((ADDRLENGTH+1) * sizeof(char)), argv[1]);
+    addrs->remote_name = strcpy(malloc((ADDRLENGTH+1) * sizeof(char)), argv[2]);
+    addrs->remote_port = strcpy(malloc((ADDRLENGTH+1) * sizeof(char)), argv[3]);
 
-    // int resp;
-    // resp = pthread_create( &th1, NULL, reciever, (void*) toPrint);
-    // resp = pthread_create( &th2, NULL, sender, (void*) toSend);
-    // resp = pthread_create( &th3, NULL, readinput, (void*) toSend);
-    // resp = pthread_create( &th4, NULL, writeoutput, (void*) toPrint);
+    pthread_t th1, th2, th3, th4;
 
-    // pthread_exit(NULL);
+    int resp;
+    resp = pthread_create( &th1, NULL, reciever, addrs);
+    resp = pthread_create( &th2, NULL, sender, addrs);
+    resp = pthread_create( &th3, NULL, readinput, addrs);
+    resp = pthread_create( &th4, NULL, writeoutput, addrs);
 
-    List *testlist = ListCreate();
-    int i = 3;
-    List_append(&testlist, &i);
-    int j = *(int *) List_remove(&testlist);
-    printf("%i", j);
+    pthread_exit(NULL);
 } 
