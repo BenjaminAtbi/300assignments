@@ -9,6 +9,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <netdb.h>
+#include <unistd.h>
 
 #include "list.h"
 #include "monitor.h"
@@ -24,10 +25,10 @@ typedef struct
     const char* remote_port;
 } addresses;
 
-void *receiver(addresses);
-void *sender(addresses);
-void *readinput(addresses);
-void *writeoutput(addresses);
+void receiver(addresses);
+void sender(addresses);
+void reader(addresses);
+void writer(addresses);
 
 void *get_in_addr(struct sockaddr *sa);
 int readline(char *buf);

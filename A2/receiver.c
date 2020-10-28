@@ -12,13 +12,14 @@ void receiver(addresses addrs)
     int sockfd; //socket file descriptor
 
     //get parameters for receiving socket
-    if ((rv = getaddrinfo(NULL, addrs.local_port, &hints, &receiver_info)) != 0) {
+    if ((rv = getaddrinfo(NULL, addrs.local_port, &hints, &receiver_info)) != 0) 
+    {
         fprintf(stderr, "Receiver getaddrinfo error: %s. exiting\n", gai_strerror(rv));
         exit(1);
     }
 
     //bind to first valid parameter set
-    for(p = receiver_info, p != NULL; p = p->ai_next) 
+    for(p = receiver_info; p != NULL; p = p->ai_next) 
     {
         //get socket descriptor
         if((sockfd = socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1)
@@ -37,7 +38,7 @@ void receiver(addresses addrs)
         break; //move to next step if process successful 
     }
 
-
+    //ensure socket was created
     if (p == NULL) {
     fprintf(stderr, "Receiver failed to initialize socket. exiting\n");
     exit(0);

@@ -19,10 +19,10 @@ int main(int argc, char *argv[]){
     pthread_t th1, th2, th3, th4;
 
     int resp;
-    resp = pthread_create( &th1, NULL, reciever, addrs);
-    resp = pthread_create( &th2, NULL, sender, addrs);
-    resp = pthread_create( &th3, NULL, readinput, addrs);
-    resp = pthread_create( &th4, NULL, writeoutput, addrs);
+    resp = pthread_create( &th1, NULL, (void *) &receiver, addrs);
+    resp = pthread_create( &th2, NULL, (void *) &sender, addrs);
+    resp = pthread_create( &th3, NULL, (void *) &reader, addrs);
+    resp = pthread_create( &th4, NULL, (void *) &writer, addrs);
 
     pthread_exit(NULL);
 } 
