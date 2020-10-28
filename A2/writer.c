@@ -1,7 +1,7 @@
 #include "client.h"
 
 
-void writer(addresses addrs)
+void writer(addresses *addrs)
 {
     pthread_exit(NULL);
 }

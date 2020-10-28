@@ -1,7 +1,7 @@
 #include "client.h"
 
 
-void reader(addresses addrs)
+void reader(addresses *addrs)
 {
     pthread_exit(NULL);
 }
