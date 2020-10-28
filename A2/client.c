@@ -1,17 +1,6 @@
 #include "client.h"
 
 
-// accept args
-// branch input
-// branch print
-// branch accept
-// branch send 
-
-//lists
-// * send queue, to send
-// * received queue, to print
-
-
 int main(int argc, char *argv[]){
 
     if(argc != 4){
@@ -23,6 +12,9 @@ int main(int argc, char *argv[]){
     addrs->local_port = strcpy(malloc((ADDRLENGTH+1) * sizeof(char)), argv[1]);
     addrs->remote_name = strcpy(malloc((ADDRLENGTH+1) * sizeof(char)), argv[2]);
     addrs->remote_port = strcpy(malloc((ADDRLENGTH+1) * sizeof(char)), argv[3]);
+
+    //initialize shared lists
+    init_monitor();
 
     pthread_t th1, th2, th3, th4;
 
