@@ -62,7 +62,6 @@ void receiver(const params* addrs)
         //if receive exit msg exit
         if(buf[0] == '!')
         {
-            printf("received exit msg\n");
             exit_procedure(addrs);
         }
     }

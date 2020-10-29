@@ -33,8 +33,8 @@ void sender(const params *addrs)
 
     //ensure socket was created 
     if (p == NULL) {
-    fprintf(stderr, "Sender: failed to initialize socket\n");
-    exit_procedure(addrs);
+        fprintf(stderr, "Sender: failed to initialize socket\n");
+        exit_procedure(addrs);
     }
 
     freeaddrinfo(remote_info); //we are done with you. Begone.
@@ -49,8 +49,6 @@ void sender(const params *addrs)
 
         //if msg was an exit message, exit
         if(buf[0] == '!'){
-            //############################
-            printf("sender exiting\n");
             free(buf);
             pthread_exit(NULL);
         }

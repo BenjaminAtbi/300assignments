@@ -11,10 +11,12 @@ int main(int argc, char *argv[]){
     addrs->remote_name = strcpy(malloc((ADDRLENGTH+1) * sizeof(char)), argv[2]);
     addrs->remote_port = strcpy(malloc((ADDRLENGTH+1) * sizeof(char)), argv[3]);
     
+    //initialize thread id buffers
     treceiver = malloc(sizeof(pthread_t));
     tsender = malloc(sizeof(pthread_t));
     treader = malloc(sizeof(pthread_t));
     twriter = malloc(sizeof(pthread_t));
+
     //initialize shared lists
     init_monitor();
 
@@ -35,7 +37,7 @@ int main(int argc, char *argv[]){
 //called by any thread when they reach error condition or exit message
 void exit_procedure(const params* addrs)
 {
-    //prevent multiple threads from attempting to cancel each other before process complete
+    //prevent multiple threads from attempting to cancel each other before procedure complete
     pthread_mutex_lock(&mexit);  
     //kill receiver and reader if not self
     if(*treceiver != pthread_self()){   

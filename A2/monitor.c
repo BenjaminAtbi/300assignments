@@ -2,7 +2,6 @@
 
 void init_monitor()
 {
-
     pthread_mutex_init(&mtxSend, NULL);
     pthread_mutex_init(&mtxReceive, NULL);
     int sem_init(sem_t *sem, int pshared, unsigned int value);

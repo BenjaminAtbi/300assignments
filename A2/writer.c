@@ -6,7 +6,7 @@ void writer(const params *addrs)
     {  
             char *buf = receive_trim();
             if(buf[0] == '!'){
-                printf("####  Connection Closed ###\n");
+                printf("\n####  Connection Closed ###\n");
                 free(buf);
                 pthread_exit(NULL);
             }
