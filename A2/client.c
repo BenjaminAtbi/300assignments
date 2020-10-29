@@ -30,12 +30,13 @@ int main(int argc, char *argv[]){
     resp = pthread_create( treader, NULL, (void *) &reader, addrs);
     resp = pthread_create( twriter, NULL, (void *) &writer, addrs);
 
+    
     pthread_exit(NULL);
 } 
 
 //end all threads after their current work is complete
 //called by any thread when they reach error condition or exit message
-void exit_procedure(const params* addrs)
+void exit_procedure(params* addrs)
 {
     //prevent multiple threads from attempting to cancel each other before procedure complete
     pthread_mutex_lock(&mexit);  
@@ -56,6 +57,16 @@ void exit_procedure(const params* addrs)
     buf2[0] = '!';
     receive_prepend(buf1);
     pthread_mutex_unlock (&mexit);
+
+    //free all reference structures
+    free(treceiver);
+    free(tsender);
+    free(treader);
+    free(twriter);
+    free(addrs->local_port);
+    free(addrs->remote_name);
+    free(addrs->remote_port);
+    free(addrs);
 
     //commit suicide. you will be remembered, brave thread 07 07 07
     pthread_exit(NULL);

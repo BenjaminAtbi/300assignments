@@ -1,6 +1,6 @@
 #include "client.h"
 
-void writer(const params *addrs)
+void writer(params *addrs)
 {
     while(1)
     {  

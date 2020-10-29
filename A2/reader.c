@@ -1,7 +1,7 @@
 #include "client.h"
 
 
-void reader(const params *addrs)
+void reader(params *addrs)
 {
     
     while(1)

@@ -1,6 +1,6 @@
 #include "client.h"
 
-void sender(const params *addrs)
+void sender(params *addrs)
 {
 
     struct addrinfo hints;

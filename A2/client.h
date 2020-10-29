@@ -22,9 +22,9 @@
 //container for relevant params
 typedef struct
 {
-    const char* local_port;
-    const char* remote_name;
-    const char* remote_port;
+    char* local_port;
+    char* remote_name;
+    char* remote_port;
 } params;
 
 //thread values
@@ -37,11 +37,11 @@ pthread_t* twriter;
 static pthread_mutex_t mexit;
 
 //spawned processes
-void receiver(const params*);
-void sender(const params*);
-void reader(const params*);
-void writer(const params*);
+void receiver(params*);
+void sender(params*);
+void reader(params*);
+void writer(params*);
 
 //ends all threads saftely
-void exit_procedure(const params*);
+void exit_procedure(params*);
 #endif

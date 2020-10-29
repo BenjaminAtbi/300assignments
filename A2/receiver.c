@@ -1,6 +1,6 @@
 #include "client.h"
 
-void receiver(const params* addrs)
+void receiver(params* addrs)
 {
     struct addrinfo hints, *receiver_info, *p;
     memset(&hints, 0, sizeof hints);
