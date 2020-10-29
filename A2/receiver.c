@@ -1,7 +1,6 @@
 #include "client.h"
 
-
-void receiver(addresses* addrs)
+void receiver(const params* addrs)
 {
     struct addrinfo hints, *receiver_info, *p;
     memset(&hints, 0, sizeof hints);
@@ -18,7 +17,7 @@ void receiver(addresses* addrs)
     if ((rv = getaddrinfo(NULL, addrs->local_port, &hints, &receiver_info)) != 0) 
     {
         fprintf(stderr, "Receiver: getaddrinfo error: %s. exiting\n", gai_strerror(rv));
-        exit(1);
+        exit_procedure(addrs);
     }
 
     //bind to first valid parameter set
@@ -43,17 +42,28 @@ void receiver(addresses* addrs)
 
     //ensure socket was created
     if (p == NULL) {
-    fprintf(stderr, "Receiver: failed to initialize socket. exiting\n");
-    exit(0);
+        fprintf(stderr, "Receiver: failed to initialize socket. exiting\n");
+        exit_procedure(addrs);
     }
 
     freeaddrinfo(receiver_info); //we are done with you. Begone.
 
-    // receive messages!
-    char* buf = malloc(MSGLENGTH * sizeof(char));
-    if ((numbytes = recvfrom(sockfd, buf, MSGLENGTH, 0, (struct sockaddr *)&their_addr, &addr_len)) == -1) {
+    // receive messages
+    while(1){
+
+        char* buf = malloc(MSGLENGTH * sizeof(char));
+        if ((numbytes = recvfrom(sockfd, buf, MSGLENGTH, 0, (struct sockaddr *)&their_addr, &addr_len)) == -1) {
             fprintf(stderr, "Receiver: error receiving message.\n");
-            exit(0);
+            exit_procedure(addrs);
+        }
+
+        receive_prepend(buf);
+        
+        //if receive exit msg exit
+        if(buf[0] == '!')
+        {
+            printf("received exit msg\n");
+            exit_procedure(addrs);
+        }
     }
-    printf("%s",buf);
 }

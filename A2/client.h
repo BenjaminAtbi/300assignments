@@ -11,6 +11,7 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <string.h>
+#include <semaphore.h>
 
 #include "list.h"
 #include "monitor.h"
@@ -18,20 +19,29 @@
 #define MSGLENGTH 100
 #define ADDRLENGTH 255
 
-//container for relevant addresses
+//container for relevant params
 typedef struct
 {
     const char* local_port;
     const char* remote_name;
     const char* remote_port;
-} addresses;
+} params;
 
-void receiver(addresses*);
-void sender(addresses*);
-void reader(addresses*);
-void writer(addresses*);
+//thread values
+pthread_t* treceiver;
+pthread_t* tsender;
+pthread_t* treader;
+pthread_t* twriter;
 
-void *get_in_addr(struct sockaddr *sa);
-int readline(char *buf);
+//mutex for process exit procedure
+static pthread_mutex_t mexit;
 
+//spawned processes
+void receiver(const params*);
+void sender(const params*);
+void reader(const params*);
+void writer(const params*);
+
+//ends all threads saftely
+void exit_procedure(const params*);
 #endif

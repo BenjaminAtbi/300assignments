@@ -1,7 +1,16 @@
 #include "client.h"
 
-
-void writer(addresses *addrs)
+void writer(const params *addrs)
 {
-    pthread_exit(NULL);
+    while(1)
+    {  
+            char *buf = receive_trim();
+            if(buf[0] == '!'){
+                printf("####  Connection Closed ###\n");
+                free(buf);
+                pthread_exit(NULL);
+            }
+            printf("%.*s",MSGLENGTH, buf);
+            free(buf);
+    }
 }
