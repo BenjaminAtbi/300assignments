@@ -5,6 +5,8 @@
 
 // loop asking user for input, then executing given function
 void doCommand();
+int getInt();
+void getInput(char* buf);
 
 //ask user for parameters of given sim function, then execute it
 void doCreate();

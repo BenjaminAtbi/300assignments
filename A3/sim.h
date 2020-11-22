@@ -76,10 +76,13 @@ void updateSim();
 void exitSim();
 int genPID();
 int killProcess(const PCBref process);
+void enqueueProcess(List* queue, PCB* process);
 
 bool COMPARATOR_PCB_PID(void* pcb, void* pid);
+bool COMPARATOR_MSG_RECVR(void* msg, void* pid);
 
 PCBref makeRef(PCB* process, int state);
+message* makeMessage(int receiver, int sender, char* msg);
 void setMessage(PCB* process,char* msg);
 PCBref getPCBbyPID(int pid);
 void printPCB(const PCBref process);
@@ -95,9 +98,9 @@ int Fork();
 void Kill(int pid);
 void Exit();
 void Quantum();
-void Send();//
-void Receive();//
-void Reply();//
+void Send(int pid, char* msg);
+void Receive();
+void Reply();
 void NewSem();//
 void SemP();//
 void SemV();//

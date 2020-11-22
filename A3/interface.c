@@ -78,7 +78,7 @@ void Help()
 //get int from user
 int getInt()
 {
-    printf("> ");
+    printf(">");
     int i;
     while(scanf(" %i", &i) != 1)
     {
@@ -88,6 +88,20 @@ int getInt()
     }
     while(getchar() != '\n');
     return i;
+}
+
+//get a message with length MSGLENGTH
+void getInput(char* buf)
+{
+    printf(">");
+    int length = MSGLENGTH;
+    char* line = malloc(length);
+    int num_read = (int) getline(&line, (size_t*)&length, stdin);
+    num_read = (num_read < MSGLENGTH) ? num_read : MSGLENGTH;
+    memset(buf, 0, MSGLENGTH * sizeof(char));
+    memcpy(buf, line, num_read * sizeof(char));
+    buf[num_read-1] = '\0';
+    free(line);
 }
 
 /* 
@@ -143,8 +157,19 @@ void doQuantum(){
     Quantum();
 }
 
-void doSend(){}
-void doReceive(){}
+void doSend(){
+    char* msg = (char*)malloc(MSGLENGTH * sizeof(char));
+    printf("input message (max characters: %i)\n",MSGLENGTH);
+    getInput(msg);
+    printf("input pid of reciever\n");
+    int pid = getInt();
+    Send(pid, msg);
+    free(msg);
+}
+
+void doReceive(){
+    Receive();
+}
 void doReply(){}
 void doNewSem(){}
 void doSemP(){}

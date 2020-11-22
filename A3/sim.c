@@ -73,14 +73,74 @@ void Exit()
 
 void Quantum()
 {
-    if(current->priority >= 0 && current->priority < NUM_QUEUES)
-    {
-        List_prepend(queues[current->priority], current);
-        current = NULL;
-    }
+    enqueueProcess(queues[current->priority], current);
+    current = NULL;
     updateSim();
 }
 
+void Send(int pid, char* msg)
+{
+    PCBref ref = getPCBbyPID(pid);
+    //error finding target
+    if (ref.state == ERR)
+    {
+        printf("cannot find PCB with that PID\n");
+        return;
+    //target is self
+    } else if(ref.pcb == current)
+    {
+        printf("process can't send message to itself\n");
+        return;
+    //target is waiting for message
+    } else if(ref.state == RECV)
+    {
+        List_first(recvQueue);
+        List_search(recvQueue, &COMPARATOR_PCB_PID, &pid);
+        PCB* receiver = List_remove(recvQueue);
+        setMessage(receiver, msg);
+        enqueueProcess(queues[receiver->priority], receiver);
+        printf("delivered message to process (PID %i)\n",pid);
+    //target not waiting for message
+    } else {
+        message* new_message = makeMessage(pid, current->PID, msg);
+        List_prepend(messages, new_message);
+        printf("queued message for process (PID %i)\n",pid);
+    }
+    if(current != init){
+        printf("blocking sender (PID %i) until reply\n",current->PID);
+        enqueueProcess(sendQueue, current);
+        current = NULL;
+        updateSim();
+    }
+}
+
+void Receive()
+{
+    //if can find a message waiting, receive it
+    List_first(messages);
+    List_search(messages, &COMPARATOR_MSG_RECVR, &current->PID);
+    if(List_curr(messages) != NULL)
+    {
+        message* incoming = List_remove(messages);
+        setMessage(current, incoming->msg);
+        printf("received message from process (PID %i):\n",incoming->sender_PID);
+        printf("%s\n",current->msg);
+        free(incoming);
+    } else {
+        if(current != init){
+            printf("blocking until message received\n");
+            enqueueProcess(recvQueue, current);
+            current = NULL;
+            updateSim();
+        }
+
+    }
+}
+
+void Reply()
+{
+    
+}
 
 /* dump info on a single process
 */

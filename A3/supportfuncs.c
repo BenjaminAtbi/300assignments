@@ -45,6 +45,10 @@ void updateSim()
     //recheck for new process if init is current
     if(current == init)
     {
+        if(current->msg[0] != 0){
+            printf("msg: %s\n",current->msg);
+            memset(current->msg, 0, MSGLENGTH * sizeof(char));
+        }
         current = NULL;
     }
     // if no process is running, take process from highest prority queue that contains a process
@@ -56,6 +60,10 @@ void updateSim()
             {
                 current = List_trim(queues[i]);
                 printf("process with PID %i now running. (selected from priority %i queue)\n", current->PID, i);
+                if(current->msg[0] != 0){
+                    printf("msg: %s\n",current->msg);
+                    memset(current->msg, 0, MSGLENGTH * sizeof(char));
+                }
                 break;
             }
         }
@@ -167,11 +175,19 @@ bool COMPARATOR_PCB_PID(void* pcb, void* pid)
     return ref->PID == *(int*)pid;
 }
 
-
-//make reference to a PCB
-PCBref makeRef(PCB* process, int state)
+//comparator between pcb and a pid
+bool COMPARATOR_MSG_RECVR(void* msg, void* pid)
 {
-    return (PCBref) {process, state};
+    message* ref = (message*)msg;
+    return ref->receiver_PID == *(int*)pid;
+}
+
+void enqueueProcess(List* queue, PCB* process)
+{
+    if(process->PID != 0)
+    {
+        List_prepend(queue, process);
+    }
 }
 
 /*
@@ -192,9 +208,23 @@ int genPID()
     return pid_counter;
 }
 
+//make reference to a PCB
+PCBref makeRef(PCB* process, int state)
+{
+    return (PCBref) {process, state};
+}
 
-/*
-    set message field of a process
+//allocate a new message 
+message* makeMessage(int receiver, int sender, char* msg)
+{
+    message* new_message = malloc(sizeof(PCB));
+    memcpy(new_message->msg, msg, MSGLENGTH * sizeof(char));
+    new_message->receiver_PID = receiver;
+    new_message->sender_PID = sender;
+    return new_message;
+}
+
+/*    set message field of a process
 */
 void setMessage(PCB* process, char* msg)
 {
