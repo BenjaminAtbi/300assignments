@@ -101,9 +101,9 @@ void Quantum();
 void Send(int pid, char* msg);
 void Receive();
 void Reply();
-void NewSem();//
-void SemP();//
-void SemV();//
+void NewSem(int semID, int val);
+void SemP(int semID);
+void SemV(int semID);
 void ProcInfo(int pid);
 void TotalInfo();
 

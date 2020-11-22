@@ -10,3 +10,6 @@ Simulation of a round robin process scheduling system
 - In this simulation, the number of active processes is limited to list capacity. Additionally, the number of 
   processes created over the lifetime of the simulation is limited to INT_MAX, with futher process creation 
   resulting in undefined behavior.  
+
+- When a process receives consecutive messages, the last send message will be delivered first. This is under 
+  the assumption that more recent messages will be more relevant to a process' current state then old messages.

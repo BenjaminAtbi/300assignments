@@ -78,13 +78,18 @@ void Quantum()
     updateSim();
 }
 
+/* send a message to process with given pid
+  - if receiver was waiting for message, unblock it
+  - otherwise, queue message
+  - place sender in blocked queue
+*/
 void Send(int pid, char* msg)
 {
     PCBref ref = getPCBbyPID(pid);
     //error finding target
     if (ref.state == ERR)
     {
-        printf("cannot find PCB with that PID\n");
+        printf("cannot find process with that PID\n");
         return;
     //target is self
     } else if(ref.pcb == current)
@@ -114,6 +119,9 @@ void Send(int pid, char* msg)
     }
 }
 
+/* receive message addressed to current process
+  - if no message ready to be received, block process
+*/
 void Receive()
 {
     //if can find a message waiting, receive it
@@ -137,9 +145,35 @@ void Receive()
     }
 }
 
-void Reply()
+/*send a reply to a sender that was block waiting for a reply
+*/
+void Reply(int pid, char* msg)
 {
-    
+    PCBref ref = getPCBbyPID(pid);
+    //error finding target
+    if (ref.state == ERR)
+    {
+        printf("cannot find process with that PID\n");
+        return;
+    //target is self
+    } else if(ref.pcb == current)
+    {
+        printf("process can't reply to itself\n");
+        return;
+    //target is not stuck in send queue
+    } else if(ref.state != SEND)
+    {
+        printf("process is not awaiting a reply\n");
+    } else
+    {
+        List_first(sendQueue);
+        List_search(sendQueue, &COMPARATOR_PCB_PID, &pid);
+        PCB* sender = List_remove(sendQueue);
+        setMessage(sender, msg);
+        enqueueProcess(queues[sender->priority], sender);
+        printf("delivered reply to process (PID %i)\n",pid);
+        updateSim();
+    }
 }
 
 /* dump info on a single process
@@ -153,6 +187,73 @@ void ProcInfo(int pid)
         return;
     }
     printPCB(ref);
+}
+
+/* initialize a semaphore
+*/
+void NewSem(int semID, int val)
+{
+    if(semaphores[semID].init)
+    {
+        printf("semaphore already initialized\n");
+    } else 
+    {
+        semaphores[semID].init = true;
+        semaphores[semID].counter = val;
+        printf("initialized semaphore %i with value %i\n", semID, val);
+    }
+}
+
+/* block process if semaphore values <= 0, else decrement val
+*/
+void SemP(int semID)
+{
+    if(!semaphores[semID].init)
+    {
+        printf("semaphore not initialized\n");
+    } else
+    {
+        if(semaphores[semID].counter <= 0)
+        {
+            if(current != init){
+                printf("blocking process on semaphore %i\n",semID);
+                enqueueProcess(semaphores[semID].blocked_queue, current);
+                current = NULL;
+                updateSim();
+            } else 
+            {
+                printf("can't block init on a semaphore\n");
+            }
+        } else 
+        {
+            semaphores[semID].counter--;
+            printf("decremented semaphore %i\n",semID);
+        }
+    }
+}
+
+/* increment val. if > 0 and process on blocked queue, unblock it and decrement again
+*/
+void SemV(int semID)
+{
+    if(!semaphores[semID].init)
+    {
+        printf("semaphore not initialized\n");
+    } else
+    {
+        semaphores[semID].counter++;
+
+        if(semaphores[semID].counter > 0 && List_count(semaphores[semID].blocked_queue) > 0)
+        {
+            PCB* process = List_trim(semaphores[semID].blocked_queue);
+            enqueueProcess(queues[process->priority], process);
+            semaphores[semID].counter--;
+            printf("unblocked process on semaphore %i (PID: %i)\n", semID, process->priority);
+            updateSim();
+        } else {
+            printf("incremented semaphore %i\n",semID);
+        }
+    }
 }
 
 /* Dump info on all aspects of simulation

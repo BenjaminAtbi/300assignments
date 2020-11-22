@@ -31,6 +31,7 @@ void Initialize()
     for(int i = 0; i < NUM_SEMS; i++)
     {
         semaphores[i] = (semaphore) {false, 0, NULL};
+        semaphores[i].blocked_queue = List_create();
     }
 
     pid_counter = 0;

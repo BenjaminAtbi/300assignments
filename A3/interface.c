@@ -170,10 +170,53 @@ void doSend(){
 void doReceive(){
     Receive();
 }
-void doReply(){}
-void doNewSem(){}
-void doSemP(){}
-void doSemV(){}
+
+void doReply(){
+    char* msg = (char*)malloc(MSGLENGTH * sizeof(char));
+    printf("input reply (max characters: %i)\n",MSGLENGTH);
+    getInput(msg);
+    printf("input pid of sender\n");
+    int pid = getInt();
+    Reply(pid, msg);
+    free(msg);
+}
+
+void doNewSem(){
+    printf("Input id of the semaphore to initialize (0 - 4)\n");
+    int semID = getInt();
+    while(semID > 4 || semID < 0)
+    {
+        printf("semaphore ID not within valid range (0 - 4)\n");
+        semID = getInt();
+    }
+
+    printf("Input initial value of the semaphore\n");
+    int sem_val = getInt();
+
+    NewSem(semID, sem_val);
+}
+void doSemP(){
+    printf("Input id of the semaphore to perform P operation on (0 - 4)\n");
+    int semID = getInt();
+    while(semID > 4 || semID < 0)
+    {
+        printf("semaphore ID not within valid range (0 - 4)\n");
+        semID = getInt();
+    }
+    SemP(semID);
+}
+
+
+void doSemV(){
+    printf("Input id of the semaphore to perform V operation on (0 - 4)\n");
+    int semID = getInt();
+    while(semID > 4 || semID < 0)
+    {
+        printf("semaphore ID not within valid range (0 - 4)\n");
+        semID = getInt();
+    }
+    SemV(semID);
+}
 
 void doProcInfo(){
     printf("Input process ID\n");
