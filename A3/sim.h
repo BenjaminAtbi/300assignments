@@ -19,7 +19,7 @@ List* recvQueue;
 List* messages;
 
 
-enum pcb_state{ PRIO_0, PRIO_1, PRIO_2, SEND, RECV, SEM_0, SEM_1, SEM_2,SEM_3, SEM_4, RUNNING, INIT};
+enum pcb_state{ PRIO_0, PRIO_1, PRIO_2, SEM_0, SEM_1, SEM_2,SEM_3, SEM_4, SEND, RECV, RUNNING, INIT, ERR};
 
 // Process Control Block, 
 typedef struct PCB
@@ -72,11 +72,17 @@ PCB* current;
 
 
 void Initialize();
+void updateSim();
+void exitSim();
 int genPID();
+int killProcess(const PCBref process);
 
-void setMessage(PCB* process, char* msg);
+bool COMPARATOR_PCB_PID(void* pcb, void* pid);
+
+PCBref makeRef(PCB* process, int state);
+void setMessage(PCB* process,char* msg);
 PCBref getPCBbyPID(int pid);
-void printPCB(PCBref process);
+void printPCB(const PCBref process);
 
 /*
     ##########################
@@ -85,16 +91,16 @@ void printPCB(PCBref process);
 */
 
 int Create(int priority);
-void Fork();
-void Kill();
+int Fork(); 
+void Kill(int pid);
 void Exit();
 void Quantum();
-void Send();
-void Receive();
-void Reply();
-void NewSem();
-void SemP();
-void SemV();
+void Send();//
+void Receive();//
+void Reply();//
+void NewSem();//
+void SemP();//
+void SemV();//
 void ProcInfo(int pid);
 void TotalInfo();
 

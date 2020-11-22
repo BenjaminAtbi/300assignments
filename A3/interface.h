@@ -3,5 +3,23 @@
 #include "sim.h"
 
 
+// loop asking user for input, then executing given function
+void doCommand();
 
+//ask user for parameters of given sim function, then execute it
+void doCreate();
+void doFork();
+void doKill();
+void doExit();
+void doQuantum();
+void doSend();
+void doReceive();
+void doReply();
+void doNewSem();
+void doSemP();
+void doSemV();
+void doProcInfo();
+void doTotalInfo();
+
+void Help();
 #endif
