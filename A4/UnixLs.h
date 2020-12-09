@@ -49,6 +49,9 @@ void setFlags(flags* f_args, char* const arg);
 */
 void getSymlinkVal(char* buf, const char* parent_path, const char* tail_path);
 
+/*
+    return 'd' if directory, 'l' if link, otherwise '-'
+*/
 char getTypeChar(const struct stat* statbuf);
 
 /* 
@@ -58,6 +61,11 @@ char getTypeChar(const struct stat* statbuf);
 */
 void printEntry(const flags* f_args, const char* pre_path, const char* path, const struct stat* statbuf);
 
+/*
+    iterate through contents of dir
+     - print each entry 
+     - if -R flag set, add each directory encountered to directory queue
+*/
 void processDir(const flags* f_args, const char* path);
 
 
