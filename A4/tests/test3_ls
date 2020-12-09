@@ -1,0 +1,623 @@
+..:
+total 28
+1093352429 -rw-r--r-- 1 batbi domain users 6441 Dec  8 23:09 test1
+1093354190 -rw-r--r-- 1 batbi domain users 6006 Dec  8 23:10 test1_ls
+1093352442 -rw-r--r-- 1 batbi domain users  442 Dec  8 23:04 test2
+1093354188 -rw-r--r-- 1 batbi domain users  378 Dec  8 23:06 test2_ls
+1093352443 -rw-r--r-- 1 batbi domain users    0 Dec  8 23:11 test3_ls
+1093352423 -rw-r--r-- 1 batbi domain users  147 Dec  8 23:02 testcases.txt
+1614762158 drwxr-sr-x 3 batbi domain users  105 Dec  8 23:02 testenv
+
+../testenv:
+total 0
+1622991889 -rw-r--r-- 1 batbi domain users  0 Dec  8 23:02 file1
+1622991890 -rw-r--r-- 1 batbi domain users  0 Dec  8 23:02 file1_hardlink
+1622991892 lrwxrwxrwx 1 batbi domain users  5 Dec  8 23:02 file1_symlink -> file1
+1622991901 -rw-r--r-- 1 batbi domain users  0 Dec  8 23:02 file2
+2162875535 drwxr-sr-x 2 batbi domain users 18 Dec  8 23:02 folder
+1622993280 lrwxrwxrwx 1 batbi domain users  6 Dec  8 23:02 folder_symlink -> folder
+
+../testenv/folder:
+total 0
+2162875536 -rw-r--r-- 1 batbi domain users 0 Dec  8 23:02 file1
+
+/home/batbi:
+total 8
+         5945380289 lrwxrwxrwx 1 batbi domain users   38 Jan 31  2020 Android -> /usr/shared/CMPT/scratch/batbi/Android
+          667869777 drwxr-sr-x 2 batbi domain users   10 Sep  8  2017 Desktop
+         2708968881 drwxr-sr-x 5 batbi domain users   77 Jan 31  2020 Documents
+         1137686457 drwxr-sr-x 2 batbi domain users 4096 Apr  9  2018 Downloads
+         3255228519 drwxr-sr-x 2 batbi domain users   10 Sep  8  2017 Music
+         3785593563 drwxr-sr-x 2 batbi domain users   10 Sep  8  2017 Pictures
+         2169566273 drwxr-sr-x 2 batbi domain users   10 Sep  8  2017 Public
+6890988139818929613 drwxr-xr-x 2 batbi domain users    0 Sep 11  2018 sfuhome
+         1700579080 drwxr-sr-x 2 batbi domain users   10 Sep  8  2017 Templates
+         5966342522 -rw-r--r-- 1 batbi domain users    5 Mar  1  2018 upstart-udev-bridge.9577.pid
+         4362890618 drwxr-sr-x 2 batbi domain users   10 Sep  8  2017 Videos
+         5945380291 lrwxrwxrwx 1 batbi domain users   41 Jan 31  2020 VirtualBox VMs -> /usr/shared/CMPT/scratch/batbi/VirtualBox
+
+/home/batbi/Desktop:
+total 0
+
+/home/batbi/Documents:
+total 4
+5384546553 drwxr-sr-x 9 batbi domain users 4096 Dec  8 23:02 300assignments
+6542755919 drwxr-sr-x 2 batbi domain users    6 Oct 10  2017 Angulartest
+3224502336 drwxr-sr-x 3 batbi domain users   34 Oct 17  2017 teamgamma
+
+/home/batbi/Documents/300assignments:
+total 20
+18291967152 drwxr-sr-x 2 batbi domain users 4096 Oct 27 21:19 A1
+13421968552 drwxr-sr-x 2 batbi domain users 4096 Dec  8 23:02 A2
+   12892898 drwxr-sr-x 2 batbi domain users 4096 Dec  8 23:02 A3
+  544744349 drwxr-sr-x 3 batbi domain users  100 Dec  8 23:03 A4
+ 4315819003 d-----S--- 5 batbi domain users   49 Oct  1 20:51 Old
+ 5402265059 -rwxr-xr-x 1 batbi domain users 8168 Dec  6 17:03 shit
+
+/home/batbi/Documents/300assignments/A1:
+total 60
+18291246632 -rw-r--r-- 1 batbi domain users  8587 Oct 27 20:19 Assignment1.zip
+18291967132 -rw-r--r-- 1 batbi domain users 11901 Oct 27 20:19 list.c
+18291967143 -rw-r--r-- 1 batbi domain users  5388 Oct  1 20:51 list.h
+18291967151 -rw-r--r-- 1 batbi domain users   150 Oct  1 20:51 makefile
+18291967153 -rw-r--r-- 1 batbi domain users 17478 Oct 27 20:19 test.c
+18291967154 -rw-r--r-- 1 batbi domain users  1199 Oct 27 20:19 test.h
+
+/home/batbi/Documents/300assignments/A2:
+total 100
+13433061561 -rw-r--r-- 1 batbi domain users  2246 Oct 28 22:57 client.c
+13434085630 -rw-r--r-- 1 batbi domain users   819 Oct 28 22:55 client.h
+13446633821 -rw-r--r-- 1 batbi domain users  9625 Dec  8 23:02 client.zip
+13452618460 -rw-r--r-- 1 batbi domain users 11901 Oct 27 20:19 list.c
+13453197658 -rw-r--r-- 1 batbi domain users  5388 Oct 27 20:19 list.h
+13453214343 -rw-r--r-- 1 batbi domain users   204 Oct 27 20:19 makefile
+13436880807 -rw-r--r-- 1 batbi domain users  1210 Oct 28 22:29 monitor.c
+13436922281 -rw-r--r-- 1 batbi domain users   837 Oct 28 22:11 monitor.h
+13438223075 -rw-r--r-- 1 batbi domain users   851 Oct 28 22:55 reader.c
+13432109091 -rw-r--r-- 1 batbi domain users   330 Oct 28 22:29 Readme.txt
+13438296146 -rw-r--r-- 1 batbi domain users  2139 Oct 28 22:54 receiver.c
+13438304942 -rw-r--r-- 1 batbi domain users  1729 Oct 28 22:54 sender.c
+13443298139 -rwxr-xr-x 1 batbi domain users 24680 Oct 28 23:00 s-talk
+13438850688 -rw-r--r-- 1 batbi domain users   351 Oct 28 22:54 writer.c
+
+/home/batbi/Documents/300assignments/A3:
+total 84
+16476434 -rw-r--r-- 1 batbi domain users 12899 Dec  8 23:02 a3.zip
+16476436 -rw-r--r-- 1 batbi domain users  6207 Dec  8 23:02 interface.c
+16476437 -rw-r--r-- 1 batbi domain users   480 Dec  8 23:02 interface.h
+16476468 -rw-r--r-- 1 batbi domain users  5514 Dec  8 23:02 list.h
+16476469 -rw-r--r-- 1 batbi domain users  8704 Dec  8 23:02 list.o
+16476470 -rw-r--r-- 1 batbi domain users   134 Dec  8 23:02 makefile
+14806059 -rw-r--r-- 1 batbi domain users   946 Dec  8 23:02 README.txt
+16476471 -rw-r--r-- 1 batbi domain users  8420 Dec  8 23:02 sim.c
+16476474 -rw-r--r-- 1 batbi domain users  2186 Dec  8 23:02 sim.h
+16476475 -rw-r--r-- 1 batbi domain users  9247 Dec  8 23:02 supportfuncs.c
+
+/home/batbi/Documents/300assignments/A4:
+total 32
+ 545142452 -rw-r--r-- 1 batbi domain users    77 Dec  8 23:02 makefile
+1093352415 drwxr-sr-x 3 batbi domain users   109 Dec  8 23:11 tests
+ 545142455 -rwxr-xr-x 1 batbi domain users 13584 Dec  8 23:03 UnixLs
+ 545142446 -rw-r--r-- 1 batbi domain users  6722 Dec  8 23:02 UnixLs.c
+ 545142448 -rw-r--r-- 1 batbi domain users  1400 Dec  8 23:02 UnixLs.h
+
+/home/batbi/Documents/300assignments/A4/tests:
+total 28
+1093352429 -rw-r--r-- 1 batbi domain users 6441 Dec  8 23:09 test1
+1093354190 -rw-r--r-- 1 batbi domain users 6006 Dec  8 23:10 test1_ls
+1093352442 -rw-r--r-- 1 batbi domain users  442 Dec  8 23:04 test2
+1093354188 -rw-r--r-- 1 batbi domain users  378 Dec  8 23:06 test2_ls
+1093352443 -rw-r--r-- 1 batbi domain users    0 Dec  8 23:11 test3_ls
+1093352423 -rw-r--r-- 1 batbi domain users  147 Dec  8 23:02 testcases.txt
+1614762158 drwxr-sr-x 3 batbi domain users  105 Dec  8 23:02 testenv
+
+/home/batbi/Documents/300assignments/A4/tests/testenv:
+total 0
+1622991889 -rw-r--r-- 1 batbi domain users  0 Dec  8 23:02 file1
+1622991890 -rw-r--r-- 1 batbi domain users  0 Dec  8 23:02 file1_hardlink
+1622991892 lrwxrwxrwx 1 batbi domain users  5 Dec  8 23:02 file1_symlink -> file1
+1622991901 -rw-r--r-- 1 batbi domain users  0 Dec  8 23:02 file2
+2162875535 drwxr-sr-x 2 batbi domain users 18 Dec  8 23:02 folder
+1622993280 lrwxrwxrwx 1 batbi domain users  6 Dec  8 23:02 folder_symlink -> folder
+
+/home/batbi/Documents/300assignments/A4/tests/testenv/folder:
+total 0
+2162875536 -rw-r--r-- 1 batbi domain users 0 Dec  8 23:02 file1
+
+/home/batbi/Documents/Angulartest:
+total 0
+
+/home/batbi/Documents/teamgamma:
+total 0
+7127719228 drwxr-sr-x 3 batbi domain users 63 Oct 17  2017 cmpt106-gamma
+
+/home/batbi/Documents/teamgamma/cmpt106-gamma:
+total 8
+7127719230 -rw-r--r-- 1 batbi domain users 1501 Oct 17  2017 README.md
+7127719235 -rw-r--r-- 1 batbi domain users  231 Oct 17  2017 test.py
+
+/home/batbi/Downloads:
+total 156
+1329227867 -rw-r--r-- 1 batbi domain users   1017 Feb  1  2018 buffer-overrun.zip
+1284449300 -rw-r--r-- 1 batbi domain users   4615 Mar 15  2018 care-a7.zip
+1171096071 -rw-r--r-- 1 batbi domain users    696 Jan 10  2018 care-l1.zip
+1151934004 -rw-r--r-- 1 batbi domain users 133351 Mar  1  2018 Formula Sheet.pdf
+1243636651 -rw-r--r-- 1 batbi domain users   4356 Feb 18  2018 tests(1).zip
+
+/home/batbi/Music:
+total 0
+
+/home/batbi/Pictures:
+total 0
+
+/home/batbi/Public:
+total 0
+
+/home/batbi/sfuhome:
+total 4
+6488513536258968367 drwxr-xr-x 2 batbi domain users   0 Apr  9  2018 cmpt225
+4935189981761821495 drwxr-xr-x 2 batbi domain users   0 Apr  4  2018 cmpt295
+ 654655090106393635 -rwxr-xr-x 1 batbi domain users 282 Mar  1  2018 desktop.ini
+1625774906897471636 drwxr-xr-x 2 batbi domain users   0 Oct  9  2018 iat 102
+3710622255066112764 drwxr-xr-x 2 batbi domain users   0 Nov 10  2017 mse project 3
+4297996742624662584 drwxr-xr-x 2 batbi domain users   0 Nov 28  2017 mse project 4
+6890988156998798798 drwxr-xr-x 2 batbi domain users   0 Jul 17  2017 pub_html
+ 654655090106393636 drwxr-xr-x 2 batbi domain users   0 Mar  1  2018 $RECYCLE.BIN
+
+/home/batbi/sfuhome/cmpt225:
+total 0
+ 9103977499446794144 drwxr-xr-x 2 batbi domain users 0 Feb 19  2018 assign0
+ 9103977533806532517 drwxr-xr-x 2 batbi domain users 0 Mar  5  2018 assign1
+12461705424475933109 drwxr-xr-x 2 batbi domain users 0 Mar 15  2018 assign2
+ 9185605929894589654 drwxr-xr-x 2 batbi domain users 0 Apr  9  2018 assign3
+ 4935189895862475564 drwxr-xr-x 2 batbi domain users 0 Jan 16  2018 lab1
+ 6488513540553935667 drwxr-xr-x 2 batbi domain users 0 Jan 22  2018 lab2
+
+/home/batbi/sfuhome/cmpt225/assign0:
+total 60
+4075926570955223470 -rwxr-xr-x 1 batbi domain users  2536 Feb 19  2018 a1.zip
+9103977499446794147 -rwxr-xr-x 1 batbi domain users   717 Feb 18  2018 char_stack.cpp
+9103977495151826850 -rwxr-xr-x 1 batbi domain users   315 Feb 19  2018 char_stack.h
+4075926669739471279 -rwxr-xr-x 1 batbi domain users  2880 Feb 19  2018 char_stack.o
+4075926558070321586 -rwxr-xr-x 1 batbi domain users 15104 Feb 19  2018 gscheck
+9103977499446794145 -rwxr-xr-x 1 batbi domain users  2555 Feb 19  2018 gscheck.cpp
+4075926562365288880 -rwxr-xr-x 1 batbi domain users  7240 Feb 19  2018 gscheck.o
+9103977499446794148 -rwxr-xr-x 1 batbi domain users   307 Feb  5  2018 makefile
+1634738851502928300 -rwxr-xr-x 1 batbi domain users   183 Feb 18  2018 node.cpp
+4075926528005550509 -rwxr-xr-x 1 batbi domain users   165 Feb  9  2018 node.h
+4075926639674700209 -rwxr-xr-x 1 batbi domain users  1552 Feb 19  2018 node.o
+
+/home/batbi/sfuhome/cmpt225/assign1:
+total 20
+10496948634644448210 -rwxr-xr-x 1 batbi domain users  717 Mar  5  2018 char_stack.cpp
+10496948630349480913 -rwxr-xr-x 1 batbi domain users  315 Mar  5  2018 char_stack.h
+10496948694773990355 -rwxr-xr-x 1 batbi domain users 2676 Mar  5  2018 deque.h
+10496947728406348752 -rwxr-xr-x 1 batbi domain users  183 Mar  5  2018 node.cpp
+ 9103977508036728742 -rwxr-xr-x 1 batbi domain users  165 Mar  5  2018 node.h
+
+/home/batbi/sfuhome/cmpt225/assign2:
+total 244
+12461705445950769591 -rwxr-xr-x 1 batbi domain users  3723 Mar 15  2018 Deque.cpp
+12461705437360834998 -rwxr-xr-x 1 batbi domain users  2680 Mar 15  2018 Deque.h
+ 8737801060382246415 -rwxr-xr-x 1 batbi domain users  9024 Mar 15  2018 Deque.o
+ 8738443561719924243 -rwxr-xr-x 1 batbi domain users  2084 Mar 15  2018 Deque.zip
+ 8737801133396690449 -rwxr-xr-x 1 batbi domain users 14960 Mar 15  2018 dqtest1
+12461705471720573369 -rwxr-xr-x 1 batbi domain users  1417 Mar 15  2018 dqtest1.cpp
+ 8737801111921853968 -rwxr-xr-x 1 batbi domain users  4680 Mar 15  2018 dqtest1.o
+ 4748676117785446669 -rwxr-xr-x 1 batbi domain users   745 Mar 15  2018 dqtest1-output.txt
+ 8737792702375888390 -rwxr-xr-x 1 batbi domain users 14960 Mar 15  2018 dqtest2
+ 4748676117785446670 -rwxr-xr-x 1 batbi domain users  1102 Mar 15  2018 dqtest2.cpp
+ 8737801210706101778 -rwxr-xr-x 1 batbi domain users  5176 Mar 15  2018 dqtest2.o
+ 4748676122080413967 -rwxr-xr-x 1 batbi domain users   899 Mar 15  2018 dqtest2-output.txt
+ 8737792818340005384 -rwxr-xr-x 1 batbi domain users 14960 Mar 15  2018 dqtest3
+ 4748676122080413968 -rwxr-xr-x 1 batbi domain users   738 Mar 15  2018 dqtest3.cpp
+ 8737792801160136199 -rwxr-xr-x 1 batbi domain users  3992 Mar 15  2018 dqtest3.o
+ 4748676122080413969 -rwxr-xr-x 1 batbi domain users   476 Mar 15  2018 dqtest3-output.txt
+ 8737792930009155082 -rwxr-xr-x 1 batbi domain users 15024 Mar 15  2018 dqtest4
+ 4748676126375381266 -rwxr-xr-x 1 batbi domain users  1334 Mar 15  2018 dqtest4.cpp
+ 8737792917124253193 -rwxr-xr-x 1 batbi domain users  5200 Mar 15  2018 dqtest4.o
+ 4748676126375381267 -rwxr-xr-x 1 batbi domain users   310 Mar 15  2018 dqtest4-output.txt
+ 8737793037383337484 -rwxr-xr-x 1 batbi domain users 14960 Mar 15  2018 dqtest5
+ 7080764551152136287 -rwxr-xr-x 1 batbi domain users   637 Mar 15  2018 dqtest5.cpp
+ 8737793015908501003 -rwxr-xr-x 1 batbi domain users  4168 Mar 15  2018 dqtest5.o
+ 8737793144757519886 -rwxr-xr-x 1 batbi domain users 14960 Mar 15  2018 dqtest6
+ 7080764551152136288 -rwxr-xr-x 1 batbi domain users   548 Mar 15  2018 dqtest6.cpp
+ 8737793123282683405 -rwxr-xr-x 1 batbi domain users  3840 Mar 15  2018 dqtest6.o
+12461705458835671480 -rwxr-xr-x 1 batbi domain users   900 Mar 15  2018 Makefile
+ 8743908559707907681 -rwxr-xr-x 1 batbi domain users   745 Mar 15  2018 t1.txt
+ 8743977201875232354 -rwxr-xr-x 1 batbi domain users   899 Mar 15  2018 t2.txt
+ 8744309984531261027 -rwxr-xr-x 1 batbi domain users   476 Mar 15  2018 t3.txt
+ 7080764529677299796 -rwxr-xr-x 1 batbi domain users   310 Mar 15  2018 t4.txt
+ 8745918518507203662 -rwxr-xr-x 1 batbi domain users    92 Mar 15  2018 t5.txt
+ 7080764551152136289 -rwxr-xr-x 1 batbi domain users   750 Mar 15  2018 valgrind-pop-good.txt
+ 7244784584755232762 -rwxr-xr-x 1 batbi domain users  1310 Mar 15  2018 valgrind-pop-leak.txt
+ 6487378917579490708 -rwxr-xr-x 1 batbi domain users  8712 Mar 15  2018 x
+
+/home/batbi/sfuhome/cmpt225/assign3:
+total 508
+10199599656387217712 -rwxr-xr-x 1 batbi domain users  35742 Apr  9  2018 assign3.zip
+12448623813088949859 -rwxr-xr-x 1 batbi domain users  10972 Mar 22  2016 btree_container.h
+12448623795909080673 -rwxr-xr-x 1 batbi domain users  82123 Mar 22  2016 btree.h
+ 9185606002909033690 -rwxr-xr-x 1 batbi domain users   4000 Mar 22  2016 btree_set.h
+ 9185605968549295320 drwxr-xr-x 2 batbi domain users      0 Apr  9  2018 cpp-btree
+ 8917304768930900404 -rwxr-xr-x 1 batbi domain users    114 Apr  9  2018 makefile
+ 8917304867715148220 -rwxr-xr-x 1 batbi domain users  40749 Apr  9  2018 Report.odt
+ 9185605947074458839 -rwxr-xr-x 1 batbi domain users 139555 Apr  9  2018 source-archive.zip
+ 8917305039513840055 -rwxr-xr-x 1 batbi domain users  53248 Apr  9  2018 t
+ 8917304841945344442 -rwxr-xr-x 1 batbi domain users   1212 Apr  9  2018 t1.cpp
+ 8917304880600050109 -rwxr-xr-x 1 batbi domain users   1155 Apr  9  2018 t2.cpp
+ 8917304777520834997 -rwxr-xr-x 1 batbi domain users   1275 Apr  9  2018 t.cpp
+ 8917304829060442553 -rwxr-xr-x 1 batbi domain users  18846 Apr  9  2018 tests.ods
+ 8917305026628938166 -rwxr-xr-x 1 batbi domain users 103776 Apr  9  2018 t.o
+
+/home/batbi/sfuhome/cmpt225/assign3/cpp-btree:
+total 124
+12448623804499015266 -rwxr-xr-x 1 batbi domain users 16888 Mar 22  2016 btree_bench.cc
+ 9185606020088902875 -rwxr-xr-x 1 batbi domain users  4424 Mar 22  2016 btree_map.h
+ 9185606110283216096 -rwxr-xr-x 1 batbi domain users 10140 Mar 22  2016 btree_test.cc
+ 9185606093103346911 -rwxr-xr-x 1 batbi domain users   828 Mar 22  2016 btree_test_flags.cc
+12448623830268819045 -rwxr-xr-x 1 batbi domain users 30150 Mar 22  2016 btree_test.h
+ 9185606041563739356 -rwxr-xr-x 1 batbi domain users  1594 Mar 22  2016 CMakeLists.txt
+ 9185605985729164505 -rwxr-xr-x 1 batbi domain users 11358 Mar 22  2016 COPYING
+12448623821678884452 -rwxr-xr-x 1 batbi domain users   976 Mar 22  2016 README
+ 9185606131758052577 -rwxr-xr-x 1 batbi domain users 12569 Mar 22  2016 safe_btree.h
+ 9185606058743608541 -rwxr-xr-x 1 batbi domain users  3101 Mar 22  2016 safe_btree_map.h
+ 9185606075923477726 -rwxr-xr-x 1 batbi domain users  2996 Mar 22  2016 safe_btree_set.h
+ 4964384751351033240 -rwxr-xr-x 1 batbi domain users  3942 Mar 22  2016 safe_btree_test.cc
+
+/home/batbi/sfuhome/cmpt225/lab1:
+total 35
+4935189925927246640 -rwxr-xr-x 1 batbi domain users   12 Jan  3  2012 1.gt
+4935189930222213937 -rwxr-xr-x 1 batbi domain users    1 Jan  3  2012 1.in
+4935189960286985013 -rwxr-xr-x 1 batbi domain users   12 Jan 22  2018 1.out
+4935189938812148530 -rwxr-xr-x 1 batbi domain users    4 Jan  3  2012 2.gt
+4935189947402083123 -rwxr-xr-x 1 batbi domain users    2 Jan  3  2012 2.in
+4935189973171886902 -rwxr-xr-x 1 batbi domain users    5 Jan 22  2018 2.out
+4935189913042344750 -rwxr-xr-x 1 batbi domain users 9432 Jan  8  2018 a.out
+4935189904452410157 -rwxr-xr-x 1 batbi domain users  253 Jan 12  2018 hello.cpp
+4935189925927246639 -rwxr-xr-x 1 batbi domain users 9376 Jan  8  2018 hello_world
+4935189951697050420 -rwxr-xr-x 1 batbi domain users  593 Jan 10  2012 test.py
+
+/home/batbi/sfuhome/cmpt225/lab2:
+total 20
+6488513536258968368 -rwxr-xr-x 1 batbi domain users  478 Jan 16  2018 a0b.cpp
+5009658018819413638 -rwxr-xr-x 1 batbi domain users 1550 Jan 16  2018 a0b.zip
+6488513540553935666 -rwxr-xr-x 1 batbi domain users  674 Jan 15  2018 basic_int_stack.cpp
+6488513536258968369 -rwxr-xr-x 1 batbi domain users  468 Jan 15  2018 basic_int_stack.h
+5009657924330133127 -rwxr-xr-x 1 batbi domain users  193 Jan 15  2018 makefile
+
+/home/batbi/sfuhome/cmpt295:
+total 4
+ 3902336448258305638 drwxr-xr-x 2 batbi domain users   0 Jan 15  2018 assign1
+ 9226237089303601866 drwxr-xr-x 2 batbi domain users   0 Jan 25  2018 assign2
+  654533267654762103 drwxr-xr-x 2 batbi domain users   0 Feb  1  2018 assign3
+  654533271949729405 drwxr-xr-x 2 batbi domain users   0 Feb 27  2018 assign4
+12600180933943545160 drwxr-xr-x 2 batbi domain users   0 Mar  7  2018 assign6
+ 8739507665636553542 drwxr-xr-x 2 batbi domain users   0 Apr  3  2018 assign7
+12505865848706217752 drwxr-xr-x 2 batbi domain users   0 Mar 28  2018 assign8
+12505866024799876901 drwxr-xr-x 2 batbi domain users   0 Apr  9  2018 assign9
+ 9509206929393136138 -rwxr-xr-x 1 batbi domain users 166 Apr  4  2018 c.zip
+ 4935189986056788792 drwxr-xr-x 2 batbi domain users   0 Jan 10  2018 lab1
+ 6000279937716674801 drwxr-xr-x 2 batbi domain users   0 Jan 17  2018 lab2
+ 7350670311904218333 drwxr-xr-x 2 batbi domain users   0 Jan 26  2018 lab3
+12449895522823098114 drwxr-xr-x 2 batbi domain users   0 Jan 31  2018 lab4
+  654347810964207998 drwxr-xr-x 2 batbi domain users   0 Mar 14  2018 lab5
+  911534391157170882 drwxr-xr-x 2 batbi domain users   0 Jan 25  2018 scratch
+
+/home/batbi/sfuhome/cmpt295/assign1:
+total 8
+1899408742179184961 -rwxr-xr-x 1 batbi domain users  873 Jan 16  2018 answers.txt
+3902336448258305639 drwxr-xr-x 2 batbi domain users    0 Jan  4  2018 care-a1
+ 654655094401360930 -rwxr-xr-x 1 batbi domain users 2717 Jan 15  2018 care-a1.zip
+
+/home/batbi/sfuhome/cmpt295/assign1/care-a1:
+total 4
+  658500636317535663 -rwxr-xr-x 1 batbi domain users 414 Jan  4  2018 a0.zip
+ 3902336448258305640 drwxr-xr-x 2 batbi domain users   0 Jan 16  2018 q3
+11702282295162367597 drwxr-xr-x 2 batbi domain users   0 Jan 16  2018 q4
+
+/home/batbi/sfuhome/cmpt295/assign1/care-a1/q3:
+total 36
+11702282277982498412 -rwxr-xr-x 1 batbi domain users  207 Jan 16  2018 main.c
+ 8054328006723832801 -rwxr-xr-x 1 batbi domain users 2104 Jan 16  2018 main.o
+ 8054327938004356064 -rwxr-xr-x 1 batbi domain users 1004 Jan 16  2018 main.s
+ 3902336448258305642 -rwxr-xr-x 1 batbi domain users  183 Jan  4  2018 makefile
+ 8054328015313767394 -rwxr-xr-x 1 batbi domain users  776 Jan 15  2018 mystery.o
+11702282269392563819 -rwxr-xr-x 1 batbi domain users  173 Jan  4  2018 mystery.s
+ 8054328109803047908 -rwxr-xr-x 1 batbi domain users 8768 Jan 16  2018 x
+
+/home/batbi/sfuhome/cmpt295/assign1/care-a1/q4:
+total 45
+ 6919462806615711596 -rwxr-xr-x 1 batbi domain users    0 Jan 16  2018 dec.s
+11702282316637204079 -rwxr-xr-x 1 batbi domain users  225 Jan 16  2018 main.c
+ 6919462892515057522 -rwxr-xr-x 1 batbi domain users  197 Jan 16  2018 main.c.save
+ 6919462840975449967 -rwxr-xr-x 1 batbi domain users 1824 Jan 16  2018 main.o
+ 6919462806615711598 -rwxr-xr-x 1 batbi domain users  781 Jan 16  2018 main.s
+11702282303752302190 -rwxr-xr-x 1 batbi domain users  163 Jan  4  2018 makefile
+ 6919462840975449968 -rwxr-xr-x 1 batbi domain users  768 Jan 16  2018 mul.o
+ 6919462780845907819 -rwxr-xr-x 1 batbi domain users  349 Jan 16  2018 mul.s
+ 6919462798025777005 -rwxr-xr-x 1 batbi domain users  472 Jan 16  2018 temp
+ 6919462858155319153 -rwxr-xr-x 1 batbi domain users 8720 Jan 16  2018 x
+
+/home/batbi/sfuhome/cmpt295/assign2:
+total 0
+9226237097893536460 drwxr-xr-x 2 batbi domain users 0 Jan 25  2018 care-a2
+
+/home/batbi/sfuhome/cmpt295/assign2/care-a2:
+total 40
+9226237097893536461 -rwxr-xr-x 1 batbi domain users  212 Jan  7  2018 main.c
+2193443461680843121 -rwxr-xr-x 1 batbi domain users 1832 Jan 25  2018 main.o
+2193443461680843120 -rwxr-xr-x 1 batbi domain users  830 Jan 25  2018 main.s
+9226237102188503758 -rwxr-xr-x 1 batbi domain users  298 Jan  7  2018 makefile
+2193443465975810418 -rwxr-xr-x 1 batbi domain users 1800 Jan 25  2018 sqrt.o
+9226237102188503759 -rwxr-xr-x 1 batbi domain users   86 Jan  7  2018 sqrtrd.s
+2193443457385875823 -rwxr-xr-x 1 batbi domain users  518 Jan 25  2018 sqrt.s
+2193443457385875827 -rwxr-xr-x 1 batbi domain users 9376 Jan 25  2018 x
+
+/home/batbi/sfuhome/cmpt295/assign3:
+total 4
+654533267654762097 drwxr-xr-x 2 batbi domain users    0 Feb  1  2018 care-a3
+654533263359794800 -rwxr-xr-x 1 batbi domain users 1401 Feb  1  2018 care-a3.zip
+
+/home/batbi/sfuhome/cmpt295/assign3/care-a3:
+total 56
+11505051568656585280 -rwxr-xr-x 1 batbi domain users 9456 Feb  1  2018 bonux
+11504865502083387967 -rwxr-xr-x 1 batbi domain users 1728 Feb  1  2018 hex_str_bonus.o
+  654533267654762101 -rwxr-xr-x 1 batbi domain users   97 Jan 19  2018 hex_str_bonus.s
+11497712096612946497 -rwxr-xr-x 1 batbi domain users 1864 Feb  1  2018 hex_str.o
+  654533267654762100 -rwxr-xr-x 1 batbi domain users 1349 Feb  1  2018 hex_str.s
+  654533267654762098 -rwxr-xr-x 1 batbi domain users  440 Jan 19  2018 main.c
+  654533267654762108 -rwxr-xr-x 1 batbi domain users 2064 Feb  1  2018 main.o
+  654533263359794811 -rwxr-xr-x 1 batbi domain users 1321 Feb  1  2018 main.s
+  654533267654762099 -rwxr-xr-x 1 batbi domain users  335 Jan 19  2018 makefile
+11504863307355099710 -rwxr-xr-x 1 batbi domain users 9576 Feb  1  2018 x
+
+/home/batbi/sfuhome/cmpt295/assign4:
+total 36
+3916737662578086530 -rwxr-xr-x 1 batbi domain users 2440 Feb 22  2018 age.o
+3916737589563642493 -rwxr-xr-x 1 batbi domain users 1394 Feb 22  2018 age.s
+3916737593858609790 -rwxr-xr-x 1 batbi domain users  246 Feb  8  2018 main.c
+3916737602448544383 -rwxr-xr-x 1 batbi domain users 1816 Feb 22  2018 main.o
+3916737589563642491 -rwxr-xr-x 1 batbi domain users  685 Feb 22  2018 main.s
+3916737585268675196 -rwxr-xr-x 1 batbi domain users  174 Jan 22  2018 makefile
+3916737769952268929 -rwxr-xr-x 1 batbi domain users 9616 Feb 22  2018 x
+
+/home/batbi/sfuhome/cmpt295/assign6:
+total 32
+ 9033953778578761962 -rwxr-xr-x 1 batbi domain users 12168 Mar  7  2018 2c.odt
+12600181028432825682 drwxr-xr-x 2 batbi domain users     0 Mar  8  2018 care-a6
+12600180925353610567 -rwxr-xr-x 1 batbi domain users  2417 Mar  7  2018 care-a6.zip
+ 9032780488002775272 -rwxr-xr-x 1 batbi domain users 12625 Mar  7  2018 chart.ods
+
+/home/batbi/sfuhome/cmpt295/assign6/care-a6:
+total 53
+ 8153952792529609510 -rwxr-xr-x 1 batbi domain users   459 Mar  7  2018 assembly.sample
+ 8153952822594380584 -rwxr-xr-x 1 batbi domain users   624 Mar  8  2018 lsearch_2.c
+12600181037022760275 -rwxr-xr-x 1 batbi domain users    44 Feb 13  2018 lsearch_2.h
+ 8153952917083661100 -rwxr-xr-x 1 batbi domain users  1296 Mar  8  2018 lsearch_2.o
+ 8153952865544053547 -rwxr-xr-x 1 batbi domain users   693 Mar  8  2018 lsearch_2.s
+ 7487927437916335393 -rwxr-xr-x 1 batbi domain users  2476 Mar  7  2018 main.c
+ 8153952874133988138 -rwxr-xr-x 1 batbi domain users  4096 Mar  7  2018 main.o
+ 8153952835479282473 -rwxr-xr-x 1 batbi domain users  5357 Mar  7  2018 main.s
+ 8153952805414511399 -rwxr-xr-x 1 batbi domain users   287 Feb 13  2018 makefile
+ 8153952955738366765 -rwxr-xr-x 1 batbi domain users 13184 Mar  8  2018 x
+
+/home/batbi/sfuhome/cmpt295/assign7:
+total 28
+8780157868939710980 -rwxr-xr-x 1 batbi domain users   985 Mar 16  2018 answers.txt
+8733301094295310850 -rwxr-xr-x 1 batbi domain users 23491 Mar 16  2018 benchmarked sets.ods
+8739508739378377543 drwxr-xr-x 2 batbi domain users     0 Feb 27  2018 care-a7
+
+/home/batbi/sfuhome/cmpt295/assign7/care-a7:
+total 0
+8739508898292167502 drwxr-xr-x 2 batbi domain users 0 Mar 15  2018 q4
+8739508747968312136 drwxr-xr-x 2 batbi domain users 0 Apr  4  2018 q5
+
+/home/batbi/sfuhome/cmpt295/assign7/care-a7/q4:
+total 40
+8739508932651905873 -rwxr-xr-x 1 batbi domain users  267 Mar 15  2018 dynamic.c
+6606257083978284295 -rwxr-xr-x 1 batbi domain users 1872 Mar 15  2018 dynamic.o
+6606257071093382406 -rwxr-xr-x 1 batbi domain users 1582 Mar 15  2018 dynamic.s
+8739508919767003984 -rwxr-xr-x 1 batbi domain users  321 Feb 27  2018 main.c
+8739657761858646867 -rwxr-xr-x 1 batbi domain users 1744 Mar 15  2018 main.o
+8739657706024072018 -rwxr-xr-x 1 batbi domain users  744 Mar 15  2018 main.s
+8739508906882102095 -rwxr-xr-x 1 batbi domain users  224 Feb 27  2018 makefile
+6606257083978284296 -rwxr-xr-x 1 batbi domain users 8800 Mar 15  2018 x
+
+/home/batbi/sfuhome/cmpt295/assign7/care-a7/q5:
+total 49
+8739508756558246729 -rwxr-xr-x 1 batbi domain users 1550 Feb 27  2018 LL.c
+8739508769443148618 -rwxr-xr-x 1 batbi domain users  248 Feb 27  2018 LL.h
+7685892530802176709 -rwxr-xr-x 1 batbi domain users 2640 Apr  4  2018 LL.o
+8739508885407265613 -rwxr-xr-x 1 batbi domain users 3642 Mar 15  2018 LL.s
+8739508786623017803 -rwxr-xr-x 1 batbi domain users 1558 Mar 15  2018 main.c
+7685892522212242116 -rwxr-xr-x 1 batbi domain users 3080 Apr  4  2018 main.o
+3097899652223043863 -rwxr-xr-x 1 batbi domain users 3196 Apr  4  2018 main.s
+8739508799507919692 -rwxr-xr-x 1 batbi domain users  221 Feb 27  2018 makefile
+3097905171256019228 -rwxr-xr-x 1 batbi domain users   55 Mar 15  2018 output.txt
+3097907254315157789 -rwxr-xr-x 1 batbi domain users   92 Mar 15  2018 run.sh
+7685892539392111302 -rwxr-xr-x 1 batbi domain users 9472 Apr  4  2018 x
+3097905166961051931 -rwxr-xr-x 1 batbi domain users   55 Mar 15  2018 xclip
+
+/home/batbi/sfuhome/cmpt295/assign8:
+total 0
+12505865861591119641 drwxr-xr-x 2 batbi domain users 0 Mar 28  2018 care-a8
+
+/home/batbi/sfuhome/cmpt295/assign8/care-a8:
+total 60
+12505865874476021531 -rwxr-xr-x 1 batbi domain users 3523 Mar 23  2018 input
+12505865900245825310 -rwxr-xr-x 1 batbi domain users 3523 Mar 23  2018 input2
+12505865878770988828 -rwxr-xr-x 1 batbi domain users 1956 Mar 23  2018 main.c
+12505865943195498273 -rwxr-xr-x 1 batbi domain users 4576 Mar 28  2018 main.o
+12505865926015629088 -rwxr-xr-x 1 batbi domain users 4229 Mar 28  2018 main.s
+12505865870181054234 -rwxr-xr-x 1 batbi domain users  212 Mar 23  2018 makefile
+12505865908835759903 -rwxr-xr-x 1 batbi domain users 1731 Mar 23  2018 output2
+12505865891655890717 -rwxr-xr-x 1 batbi domain users  927 Mar 28  2018 rank.c
+12505865986145171235 -rwxr-xr-x 1 batbi domain users 1784 Mar 28  2018 rank.o
+12505865938900530978 -rwxr-xr-x 1 batbi domain users 1763 Mar 28  2018 rank.s
+12505866003325040420 -rwxr-xr-x 1 batbi domain users 9304 Mar 28  2018 x
+
+/home/batbi/sfuhome/cmpt295/assign9:
+total 84
+9390058467813306892 -rwxr-xr-x 1 batbi domain users 33810 Apr  5  2018 a9.odt
+9390063943896609294 -rwxr-xr-x 1 batbi domain users 41080 Apr  5  2018 a9.pdf
+4747163846912691908 -rwxr-xr-x 1 batbi domain users   881 Apr  3  2018 answers.txt
+4747163868387528387 drwxr-xr-x 2 batbi domain users     0 Apr  9  2018 care-a9
+
+/home/batbi/sfuhome/cmpt295/assign9/care-a9:
+total 80
+4515846576314386341 -rwxr-xr-x 1 batbi domain users  2554 Apr  4  2018 a9.zip
+4515846567724451745 -rwxr-xr-x 1 batbi domain users  1856 Apr  5  2018 main.c
+9625436977876146309 -rwxr-xr-x 1 batbi domain users  3536 Apr  5  2018 main.o
+4515846722343274406 -rwxr-xr-x 1 batbi domain users  3567 Apr  5  2018 main.s
+4747163851207659205 -rwxr-xr-x 1 batbi domain users   350 Mar 28  2018 makefile
+4515846567724451746 -rwxr-xr-x 1 batbi domain users   695 Mar 28  2018 matrix.c
+4515846572019419043 -rwxr-xr-x 1 batbi domain users   265 Mar 28  2018 matrix.h
+2838519039563794347 -rwxr-xr-x 1 batbi domain users  2448 Apr  5  2018 matrix.o
+2838518880650004394 -rwxr-xr-x 1 batbi domain users  3042 Apr  5  2018 matrix.s
+4515846576314386340 -rwxr-xr-x 1 batbi domain users  2052 Apr  5  2018 mul.c
+4515846563429484448 -rwxr-xr-x 1 batbi domain users   114 Mar 28  2018 mul.h
+9625436909156669571 -rwxr-xr-x 1 batbi domain users  2112 Apr  5  2018 mul.o
+2838518880650004392 -rwxr-xr-x 1 batbi domain users  2559 Apr  5  2018 mul.s
+9625436891976800386 -rwxr-xr-x 1 batbi domain users 11006 Apr  5  2018 runtimes.ods
+9625436982171113604 -rwxr-xr-x 1 batbi domain users 13472 Apr  5  2018 x
+
+/home/batbi/sfuhome/cmpt295/lab1:
+total 77
+ 657717912886371833 -rwxr-xr-x 1 batbi domain users   206 Jan  4  2018 main.c
+4935189994646723385 -rwxr-xr-x 1 batbi domain users 17204 Jan 10  2018 main.i
+2886435120649238287 -rwxr-xr-x 1 batbi domain users  1576 Jan 10  2018 main.o
+2886435112059303693 -rwxr-xr-x 1 batbi domain users   495 Jan 10  2018 main.s
+6606331129215743761 -rwxr-xr-x 1 batbi domain users  8664 Jan 10  2018 mul
+6606331154985547540 -rwxr-xr-x 1 batbi domain users  8632 Jan 10  2018 newmul
+6606331159280514835 -rwxr-xr-x 1 batbi domain users   696 Jan 10  2018 newtimes.o
+6606331146395612946 -rwxr-xr-x 1 batbi domain users    57 Jan 10  2018 newtimes.s
+ 657717904296437242 -rwxr-xr-x 1 batbi domain users   106 Jan  4  2018 times.c
+2886435112059303692 -rwxr-xr-x 1 batbi domain users   202 Jan 10  2018 times.i
+2886435124944205584 -rwxr-xr-x 1 batbi domain users  1224 Jan 10  2018 times.o
+2886435116354270990 -rwxr-xr-x 1 batbi domain users   274 Jan 10  2018 times.s
+
+/home/batbi/sfuhome/cmpt295/lab2:
+total 28
+5571195069733389385 -rwxr-xr-x 1 batbi domain users   303 Jan 17  2018 main.c
+5571194034646271044 -rwxr-xr-x 1 batbi domain users  3664 Jan 17  2018 main.o
+5571194571517183046 -rwxr-xr-x 1 batbi domain users 10328 Jan 17  2018 runtest
+5571194103365747781 -rwxr-xr-x 1 batbi domain users   236 Jan  7  2018 subprog.c
+5571194846395089991 -rwxr-xr-x 1 batbi domain users  2944 Jan 17  2018 subprog.o
+
+/home/batbi/sfuhome/cmpt295/lab3:
+total 40
+7350983861696695522 -rwxr-xr-x 1 batbi domain users 1736 Jan 26  2018 get_byte_by_addr.o
+7350670320494152926 -rwxr-xr-x 1 batbi domain users  122 Jan 15  2018 get_byte_by_addr.s
+7350670333379054815 -rwxr-xr-x 1 batbi domain users  805 Jan 26  2018 main.c
+7350994105193696484 -rwxr-xr-x 1 batbi domain users  794 Jan 26  2018 main.c.save
+7350983857401728225 -rwxr-xr-x 1 batbi domain users 3376 Jan 26  2018 main.o
+7350663508676021468 -rwxr-xr-x 1 batbi domain users 2885 Jan 26  2018 main.s
+7350670341968989408 -rwxr-xr-x 1 batbi domain users  252 Jan 15  2018 makefile
+7350983913236303075 -rwxr-xr-x 1 batbi domain users 9496 Jan 26  2018 x
+
+/home/batbi/sfuhome/cmpt295/lab4:
+total 52
+12449895535708000003 -rwxr-xr-x 1 batbi domain users   282 Jan 15  2018 main.c
+12449895600132509449 -rwxr-xr-x 1 batbi domain users  3160 Jan 31  2018 main.o
+12449895587247607559 -rwxr-xr-x 1 batbi domain users  1163 Jan 31  2018 main.s
+12449895552887869189 -rwxr-xr-x 1 batbi domain users   266 Jan 15  2018 makefile
+12449895565772771078 -rwxr-xr-x 1 batbi domain users   248 Jan 15  2018 p1.c
+12449895625902313227 -rwxr-xr-x 1 batbi domain users  2824 Jan 31  2018 p1.o
+12449895613017411338 -rwxr-xr-x 1 batbi domain users  1321 Jan 31  2018 p1.s
+12449895544297934596 -rwxr-xr-x 1 batbi domain users    78 Jan 15  2018 p2.c
+12449895647377149709 -rwxr-xr-x 1 batbi domain users  2312 Jan 31  2018 p2.o
+12449895638787215116 -rwxr-xr-x 1 batbi domain users   402 Jan 31  2018 p2.s
+12449895660262051598 -rwxr-xr-x 1 batbi domain users 10008 Jan 31  2018 x
+
+/home/batbi/sfuhome/cmpt295/lab5:
+total 48
+ 654347810964208004 -rwxr-xr-x 1 batbi domain users  961 Mar 14  2018 main.c
+4273888099053533037 -rwxr-xr-x 1 batbi domain users 2880 Mar 14  2018 main.o
+4273887815585691500 -rwxr-xr-x 1 batbi domain users 2761 Mar 14  2018 main.s
+ 654347810964208000 -rwxr-xr-x 1 batbi domain users  258 Feb  2  2018 makefile
+ 654347810964208006 -rwxr-xr-x 1 batbi domain users 1021 Feb  2  2018 qsorts.c
+ 654347810964208002 -rwxr-xr-x 1 batbi domain users   66 Feb  2  2018 qsorts.h
+4273888734708692847 -rwxr-xr-x 1 batbi domain users 2264 Mar 14  2018 qsorts.o
+4273888176362944366 -rwxr-xr-x 1 batbi domain users 4400 Mar 14  2018 qsorts.s
+4273889189975226224 -rwxr-xr-x 1 batbi domain users 9088 Mar 14  2018 x
+
+/home/batbi/sfuhome/cmpt295/scratch:
+total 36
+9226237097893536454 -rwxr-xr-x 1 batbi domain users   104 Jan 25  2018 func.c
+ 911534425516909251 -rwxr-xr-x 1 batbi domain users  3080 Jan 25  2018 func.o
+9226237089303601865 -rwxr-xr-x 1 batbi domain users   463 Jan 25  2018 func.s
+9226237115073405639 -rwxr-xr-x 1 batbi domain users 10064 Jan 25  2018 main
+9226237076418699972 -rwxr-xr-x 1 batbi domain users    67 Jan 25  2018 main.c
+9226237093598569157 -rwxr-xr-x 1 batbi domain users  2776 Jan 25  2018 main.o
+9226237115073405640 -rwxr-xr-x 1 batbi domain users   351 Jan 25  2018 main.s
+
+/home/batbi/sfuhome/iat 102:
+total 61372
+1625778411590785173 -rwxr-xr-x 1 batbi domain users  2769114 Sep 11  2018 heart thing.pdf
+2179841794208831638 -rwxr-xr-x 1 batbi domain users  1860052 Sep 25  2018 lab4 1.ai
+2181115634264184986 -rwxr-xr-x 1 batbi domain users   743265 Sep 25  2018 lab4 1.jpg
+2180184914851141783 -rwxr-xr-x 1 batbi domain users  1858424 Sep 25  2018 lab4 2.ai
+2181119053058152603 -rwxr-xr-x 1 batbi domain users   757085 Sep 25  2018 lab4 2.jpg
+2180610825283049624 -rwxr-xr-x 1 batbi domain users  5928270 Sep 25  2018 lab4 3.ai
+2181112284189694105 -rwxr-xr-x 1 batbi domain users   939363 Sep 25  2018 lab4 3.jpg
+1961964124826900640 -rwxr-xr-x 1 batbi domain users  1824115 Oct  2  2018 last.ai
+2821931953193237295 -rwxr-xr-x 1 batbi domain users 23081393 Oct  2  2018 midpage.ai
+1961957776865237151 drwxr-xr-x 2 batbi domain users        0 Oct  9  2018 polar bears
+2181123575658715292 -rwxr-xr-x 1 batbi domain users    34816 Sep 25  2018 Thumbs.db
+2821931119969581870 -rwxr-xr-x 1 batbi domain users 23022000 Oct  2  2018 title page.ai
+
+/home/batbi/sfuhome/iat 102/polar bears:
+total 50512
+ 1885699266713556289 -rwxr-xr-x 1 batbi domain users    19905 Oct  1  2018 2016-09-28T125513Z_917775417_S1BEUDXCGFAA_RTRMADP_3_WILDLIFE-POLARBEARS-ARCTIC1.jpg
+10264898329112426063 -rwxr-xr-x 1 batbi domain users    14422 Oct  1  2018 Bears_12.jpg
+10264901047826724437 -rwxr-xr-x 1 batbi domain users    16978 Oct  1  2018 CLIMATE_POLAR_BEARS_2_1475024.jpg
+ 1962849704133789028 -rwxr-xr-x 1 batbi domain users  1103213 Oct  1  2018 download.jpg
+ 1955960928778323305 -rwxr-xr-x 1 batbi domain users  1824115 Oct  1  2018 last.ai
+ 2822121795044311228 -rwxr-xr-x 1 batbi domain users 23620822 Oct  9  2018 midpage.ai
+ 1962963065500599655 -rwxr-xr-x 1 batbi domain users  1963013 Oct  1  2018 polar-bear.jpg
+  495355972904703817 -rwxr-xr-x 1 batbi domain users    14793 Oct  1  2018 Polar_bear_Ursus_maritimus_with_its_prey.jpg
+10264901378539206232 -rwxr-xr-x 1 batbi domain users    12268 Oct  1  2018 SteveandFriends.jpg
+ 1962646560770496673 -rwxr-xr-x 1 batbi domain users    10243 Oct  1  2018 SWNS_POLAR_BEAR_50.jpg.jpg
+ 1962807725123437921 -rwxr-xr-x 1 batbi domain users    79360 Oct  1  2018 Thumbs.db
+ 1955964768479085930 -rwxr-xr-x 1 batbi domain users 23022000 Oct  1  2018 title page.ai
+
+/home/batbi/sfuhome/mse project 3:
+total 3752
+12644838839957853202 -rwxr-xr-x 1 batbi domain users   3671 Nov 10  2017 csvreader2.m
+ 3710620726057755385 -rwxr-xr-x 1 batbi domain users   3671 Nov 10  2017 csvreader.m
+ 6290675252260027571 -rwxr-xr-x 1 batbi domain users   6032 Oct 31  2017 datalog-0.csv
+ 2756963782485494582 -rwxr-xr-x 1 batbi domain users  15030 Oct 30  2017 datalog-big1.csv
+ 2756963730945887028 -rwxr-xr-x 1 batbi domain users  15026 Oct 30  2017 datalog-big2.csv
+12644838839957853203 -rwxr-xr-x 1 batbi domain users   1278 Nov 10  2017 Group 4 - Barcode Scanner.c
+ 2756963846910004021 -rwxr-xr-x 1 batbi domain users   1909 Oct 30  2017 imgreader.m
+ 2756964023003663167 -rwxr-xr-x 1 batbi domain users 535279 Oct 30  2017 letter_A_noisy.jpg
+ 6352389203555105924 -rwxr-xr-x 1 batbi domain users 533295 Oct 30  2017 letter_B_noisy.jpg
+ 6352389207850073223 -rwxr-xr-x 1 batbi domain users 534152 Oct 30  2017 letter_C_noisy.jpg
+ 6352389216440007818 -rwxr-xr-x 1 batbi domain users 535652 Oct 30  2017 letter_D_noisy.jpg
+ 4973444731462175220 -rwxr-xr-x 1 batbi domain users 533710 Oct 30  2017 letter_E_noisy.jpg
+ 4973445659175111159 -rwxr-xr-x 1 batbi domain users 534008 Oct 30  2017 letter_F_noisy.jpg
+ 2756963872679807801 -rwxr-xr-x 1 batbi domain users 536242 Oct 30  2017 letter_G_noisy.jpg
+ 4973445689239882234 -rwxr-xr-x 1 batbi domain users  26624 Oct 30  2017 Thumbs.db
+
+/home/batbi/sfuhome/mse project 4:
+total 72
+5042145542288561211 -rwxr-xr-x 1 batbi domain users  3088 Nov 21  2017 a4.c
+3090328771634169657 -rwxr-xr-x 1 batbi domain users 13854 Nov 28  2017 mazefinder.c
+3090328784519071544 -rwxr-xr-x 1 batbi domain users 13810 Nov 28  2017 MazeSolver.c
+4298021623370208314 -rwxr-xr-x 1 batbi domain users 12850 Nov 27  2017 new 1.txt
+4733684418467187259 -rwxr-xr-x 1 batbi domain users   524 Nov 28  2017 RampReset.c
+6599882227215317814 -rwxr-xr-x 1 batbi domain users 14722 Nov 28  2017 solveMaze.c
+
+/home/batbi/sfuhome/pub_html:
+total 0
+
+/home/batbi/sfuhome/$RECYCLE.BIN:
+total 4
+654655094401360933 -rwxr-xr-x 1 batbi domain users 129 Mar  1  2018 desktop.ini
+
+/home/batbi/Templates:
+total 0
+
+/home/batbi/Videos:
+total 0

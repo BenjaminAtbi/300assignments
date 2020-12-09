@@ -1,0 +1,7 @@
+total 0
+-rw-r--r-- 1 batbi domain users  0 Dec  8 23:02 file1
+-rw-r--r-- 1 batbi domain users  0 Dec  8 23:02 file1_hardlink
+lrwxrwxrwx 1 batbi domain users  5 Dec  8 23:02 file1_symlink -> file1
+-rw-r--r-- 1 batbi domain users  0 Dec  8 23:02 file2
+drwxr-sr-x 2 batbi domain users 18 Dec  8 23:02 folder
+lrwxrwxrwx 1 batbi domain users  6 Dec  8 23:02 folder_symlink -> folder
