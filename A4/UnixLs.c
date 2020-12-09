@@ -246,9 +246,9 @@ int main(int argc, char *argv[]){
     {
         dirElem* elem = STAILQ_FIRST(&dir_head);
         STAILQ_REMOVE_HEAD(&dir_head, dirElems);
+        printf("\n");
         printf("%s:\n",elem->path);
         processDir(&f_args, elem->path);
-        printf("\n");
         free(elem);
     }
 

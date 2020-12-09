@@ -1,0 +1,6 @@
+
+Output of each test case is saved in corresponding test file
+
+some tests performed on test directory 'testenv' (included in handin) 
+
+1. UnixLs ~/
