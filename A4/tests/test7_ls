@@ -1,0 +1,7 @@
+42242 -rw-r--r-- 2 batbi batbi    0 Dec  8 22:40 file1
+42242 -rw-r--r-- 2 batbi batbi    0 Dec  8 22:40 file1_hardlink
+42246 lrwxrwxrwx 1 batbi batbi    5 Dec  8 22:41 file1_symlink -> file1
+
+folder:
+total 0
+42262 -rw-r--r-- 1 batbi batbi 0 Dec  8 22:41 file1

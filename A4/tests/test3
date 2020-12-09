@@ -48,7 +48,6 @@
 /home/batbi/Documents/300assignments:
 18291967152 drwxr-xr-x   2    batbi domain users     4096 Oct 27 21:19  A1
 13421968552 drwxr-xr-x   2    batbi domain users     4096 Dec  8 23:02  A2
-4315819003 d---------   5    batbi domain users       49 Oct  1 20:51  Old
 5402265059 -rwxr-xr-x   1    batbi domain users     8168 Dec  6 17:03  shit
 12892898 drwxr-xr-x   2    batbi domain users     4096 Dec  8 23:02  A3
 544744349 drwxr-xr-x   3    batbi domain users      100 Dec  8 23:03  A4
@@ -92,8 +91,6 @@
 16476471 -rw-r--r--   1    batbi domain users     8420 Dec  8 23:02  sim.c
 16476474 -rw-r--r--   1    batbi domain users     2186 Dec  8 23:02  sim.h
 16476475 -rw-r--r--   1    batbi domain users     9247 Dec  8 23:02  supportfuncs.c
-
-/home/batbi/Documents/300assignments/Old:
 
 /home/batbi/Documents/300assignments/A2:
 13452618460 -rw-r--r--   1    batbi domain users    11901 Oct 27 20:19  list.c

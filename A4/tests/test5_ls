@@ -1,0 +1,14 @@
+.:
+total 8
+-rw-r--r-- 2 batbi batbi    0 Dec  8 22:40 file1
+-rw-r--r-- 2 batbi batbi    0 Dec  8 22:40 file1_hardlink
+lrwxrwxrwx 1 batbi batbi    5 Dec  8 22:41 file1_symlink -> file1
+-rw-r--r-- 1 batbi batbi    0 Dec  8 22:40 file2
+drwxr-xr-x 2 batbi batbi 4096 Dec  8 22:56 folder
+d--------- 2 batbi batbi 4096 Dec  8 22:44 folder_no_perms
+lrwxrwxrwx 1 batbi batbi    6 Dec  8 22:41 folder_symlink -> folder
+
+./folder:
+total 0
+-rw-r--r-- 1 batbi batbi 0 Dec  8 22:41 file1
+ls: cannot open directory './folder_no_perms': Permission denied

@@ -1,6 +1,14 @@
 
-Output of each test case is saved in corresponding test file
+- Output of each test case is saved in corresponding test file. (testX) 
+- the corresponding ls output is saved in a similar file (testX_ls)
+- test are run in directory 'testenv' (included in handin) 
 
-some tests performed on test directory 'testenv' (included in handin) 
+tests 1 - 4 are verbatum from the assignment document
 
-1. UnixLs ~/
+1. ls -R ~/
+2. ls -l
+3. ls -Ri -l .. ~
+4. ls -liR . .. ~
+5. ls -lR
+6. ls folder_symlink
+7. ls -liR file1 file1_hardlink file1_symlink folder 
