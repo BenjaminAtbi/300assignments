@@ -12,23 +12,11 @@
 #include <stdint.h>
 #include <dirent.h>
 #include <errno.h>
-/*
-
-get args, set flags
--i: add inode to parser and format string
--l: add more info to parser and format string
--R: call directory parser recursively
-
-iterate over remaining args with parser: 
- * if file, call file parser, add to file queue
- * if dir, create dir struct, parse each file in it, add dir to dir queue
-    * if recursive, recursively call for each dir in dir
-
-print each entry in file queue, then each dir in dir queue
-
-file parser:
- * parse file data, return it
-*/
+#include <pwd.h>
+#include <grp.h>
+#include <time.h>
+#include <unistd.h>
+#define MAX_PATH 256
 
 /* 
     specify which flags among i, l, and R are set
@@ -44,7 +32,7 @@ typedef struct flags {
     after loose files, and parent directories in the case of recursive ls
 */
 typedef struct dirElem {
-    char path[256];
+    char path[MAX_PATH];
     STAILQ_ENTRY(dirElem) dirElems;
 } dirElem;
 
@@ -56,14 +44,21 @@ struct stailhead dir_head;
 */
 void setFlags(flags* f_args, char* const arg);
 
+/*
+    fill buffer with value of a symlink file
+*/
+void getSymlinkVal(char* buf, const char* parent_path, const char* tail_path);
+
+char getTypeChar(const struct stat* statbuf);
+
 /* 
     print a file entry according to parameters
     - flags arg specifies format
     - path is printed unmodified as file name
 */
-void printEntry(const flags* f_args, char* path, const struct stat* statbuf);
+void printEntry(const flags* f_args, const char* pre_path, const char* path, const struct stat* statbuf);
 
-void processDir(const flags* f_args, char* path);
+void processDir(const flags* f_args, const char* path);
 
 
 #endif
